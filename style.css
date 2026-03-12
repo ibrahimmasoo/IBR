@@ -441,7 +441,7 @@ html[dir="rtl"] .nav-links{
 }
 
 .hero-name span:hover{
-  transform: translateY(-14px) scale(1.12) rotate(-6deg);
+ transform: translateY(-18px) scale(1.16) rotate(-8deg);
   text-shadow:
     0 8px 22px rgba(255,255,255,0.22),
     0 0 10px rgba(255,255,255,0.14);
