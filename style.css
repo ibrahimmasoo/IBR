@@ -19,6 +19,170 @@ body.light-mode{
   --btn-text: #ffffff;
   --border: rgba(0,0,0,.12);
 }
+/* smooth global transitions */
+a,
+button,
+.card,
+.logo,
+.nav-links li,
+.theme-toggle,
+.lang-switcher button,
+.btn,
+.container img {
+  transition: all 0.35s ease;
+}
+
+/* logo hover */
+.logo{
+  cursor:pointer;
+}
+
+.logo:hover{
+  transform: translateY(-2px) scale(1.04);
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px rgba(255,255,255,0.18);
+}
+
+/* nav link hover */
+.navbar a{
+  position: relative;
+}
+
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background: currentColor;
+  transition: width .3s ease;
+}
+
+.navbar a:hover{
+  opacity:1;
+  transform: translateY(-2px);
+}
+
+.navbar a:hover::after{
+  width:100%;
+}
+
+/* language buttons hover */
+.lang-switcher button:hover{
+  transform: translateY(-2px) scale(1.05);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+/* theme button hover */
+.theme-toggle:hover{
+  transform: rotate(18deg) scale(1.08);
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
+}
+
+/* main button hover */
+.btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.btn:hover{
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:80%;
+  height:100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+  transition: left .55s ease;
+}
+
+.btn:hover::before{
+  left:140%;
+}
+
+/* cards hover */
+.card{
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(255,255,255,0.22);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.28);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.06),
+    transparent 35%,
+    transparent 65%,
+    rgba(255,255,255,0.04)
+  );
+  opacity:0;
+  transition: opacity .35s ease;
+  pointer-events:none;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card img{
+  transition: transform .55s ease, filter .35s ease;
+}
+
+.card:hover img{
+  transform: scale(1.06);
+  filter: brightness(1.08);
+}
+
+/* about image hover */
+.container img:hover{
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.24);
+}
+
+/* form fields hover/focus */
+.contact-form input:hover,
+.contact-form textarea:hover,
+.contact-form input:focus,
+.contact-form textarea:focus{
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+  outline:none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.06);
+}
+
+/* soft floating animation for hero button */
+.hero .btn{
+  animation: floatBtn 2.4s ease-in-out infinite;
+}
+
+.hero .btn:hover{
+  animation-play-state: paused;
+}
+
+@keyframes floatBtn{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-6px); }
+}
 
 *{
   margin:0;
