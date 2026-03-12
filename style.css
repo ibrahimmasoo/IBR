@@ -456,3 +456,20 @@ html[dir="rtl"] .nav-links{
     max-width:420px;
   }
 }
+.section,
+.card{
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.show-section{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* علشان الـ hero يفضل ظاهر من الأول */
+.hero,
+.hero *{
+  opacity: 1;
+}
