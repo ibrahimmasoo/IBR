@@ -1,135 +1,127 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ibrahim Masood Portfolio</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibrahim Masood Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="logo">IBR</div>
+  <nav class="navbar">
+    <div class="logo">IBR</div>
 
-  <ul class="nav-links">
-    <li><a href="#home" data-i18n="home">Home</a></li>
-    <li><a href="#about" data-i18n="about">About</a></li>
-    <li><a href="#projects" data-i18n="projects">Projects</a></li>
-    <li><a href="#support" data-i18n="support">Support</a></li>
-    <li><a href="#contact" data-i18n="contact">Contact</a></li>
-  </ul>
+    <ul class="nav-links">
+      <li><a href="#home" data-i18n="home">Home</a></li>
+      <li><a href="#about" data-i18n="about">About</a></li>
+      <li><a href="#projects" data-i18n="projects">Projects</a></li>
+      <li><a href="#support" data-i18n="support">Support</a></li>
+      <li><a href="#contact" data-i18n="contact">Contact</a></li>
+    </ul>
 
-  <div class="top-controls">
-    <div class="lang-switcher">
-      <button onclick="setLanguage('en')">EN</button>
-      <button onclick="setLanguage('ar')">AR</button>
-      <button onclick="setLanguage('tr')">TR</button>
+    <div class="top-controls">
+      <div class="lang-switcher">
+        <button data-lang="en">EN</button>
+        <button data-lang="ar">AR</button>
+        <button data-lang="tr">TR</button>
+      </div>
+
+      <button class="theme-toggle" aria-label="Toggle theme">☀</button>
     </div>
+  </nav>
 
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-      ☀
-    </button>
-  </div>
-</nav>
+  <section id="home" class="hero">
+    <h1 class="fade-up hero-name" id="heroName" aria-label="IBRAHIM MASOOD">
+      <span>I</span>
+      <span>B</span>
+      <span>R</span>
+      <span>A</span>
+      <span>H</span>
+      <span>I</span>
+      <span>M</span>
+      <span class="space">&nbsp;</span>
+      <span>M</span>
+      <span>A</span>
+      <span>S</span>
+      <span>O</span>
+      <span>O</span>
+      <span>D</span>
+    </h1>
 
-<section id="home" class="hero">
- <h1 class="fade-up hero-name" id="heroName" aria-label="IBRAHIM MASOOD">
-  <span>I</span>
-  <span>B</span>
-  <span>R</span>
-  <span>A</span>
-  <span>H</span>
-  <span>I</span>
-  <span>M</span>
-  <span class="space">&nbsp;</span>
-  <span>M</span>
-  <span>A</span>
-  <span>S</span>
-  <span>O</span>
-  <span>O</span>
-  <span>D</span>
-</h1>
-  <h2 class="fade-up delay1" data-i18n="heroSubtitle">Computer Engineering Student</h2>
-  <p class="fade-up delay2" data-i18n="heroText">Exploring hardware, software and digital innovation</p>
-  <a href="#about" class="btn fade-up delay3" data-i18n="explore">Explore</a>
-</section>
+    <h2 class="fade-up delay1" data-i18n="heroSubtitle">Computer Engineering Student</h2>
+    <p class="fade-up delay2" data-i18n="heroText">Exploring hardware, software and digital innovation</p>
+    <a href="#about" class="btn fade-up delay3" data-i18n="explore">Explore</a>
+  </section>
 
-<section id="about" class="section">
-  <div class="container">
-    <div class="text">
-      <h2 data-i18n="aboutTitle">About Me</h2>
-      <p data-i18n="aboutText">
-        I'm a Computer Engineering student passionate about hardware, embedded systems,
-        and building innovative technology that interacts with the real world.
-      </p>
+  <section id="about" class="section">
+    <div class="container">
+      <div class="text">
+        <h2 data-i18n="aboutTitle">About Me</h2>
+        <p data-i18n="aboutText">
+          I'm a Computer Engineering student passionate about hardware, embedded systems,
+          and building innovative technology that interacts with the real world.
+        </p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" alt="About image">
     </div>
-    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" />
-  </div>
-</section>
+  </section>
 
-<section id="projects" class="section dark">
-<h2 class="center">Selected Projects</h2>
+  <section id="projects" class="section dark">
+    <h2 class="center" data-i18n="projectsTitle">Selected Projects</h2>
 
-<div class="grid">
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Project image">
+        <h3 data-i18n="project1Title">Autonomous Drone Controller</h3>
+        <p data-i18n="project1Text">ESP32 drone flight controller with PID stabilization.</p>
+      </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-<h3>Autonomous Drone Controller</h3>
-<p>ESP32 drone flight controller with PID stabilization.</p>
-</div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Project image">
+        <h3 data-i18n="project2Title">FPGA Image Processor</h3>
+        <p data-i18n="project2Text">Hardware accelerated image processing using Verilog.</p>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
-<h3>FPGA Image Processor</h3>
-<p>Hardware accelerated image processing using Verilog.</p>
-</div>
+  <section id="support" class="section">
+    <h2 class="center" data-i18n="supportTitle">Support My Work</h2>
 
-</div>
-</section>
+    <div class="grid">
+      <div class="card center">
+        <h3 data-i18n="supportCoffee">Buy Me a Coffee</h3>
+        <button class="btn" data-i18n="donate">Donate</button>
+      </div>
 
-<section id="support" class="section">
-<h2 class="center">Support My Work</h2>
+      <div class="card center">
+        <h3>PayPal</h3>
+        <button class="btn" data-i18n="donate">Donate</button>
+      </div>
 
-<div class="grid">
+      <div class="card center">
+        <h3>Crypto</h3>
+        <p>0x123456789abcdef...</p>
+      </div>
+    </div>
+  </section>
 
-<div class="card center">
-<h3>Buy Me a Coffee</h3>
-<button class="btn">Donate</button>
-</div>
+  <section id="contact" class="section dark">
+    <h2 class="center" data-i18n="contactTitle">Let's Connect</h2>
 
-<div class="card center">
-<h3>PayPal</h3>
-<button class="btn">Donate</button>
-</div>
+    <form class="contact-form">
+      <input type="text" data-i18n-placeholder="namePlaceholder" placeholder="Name">
+      <input type="email" data-i18n-placeholder="emailPlaceholder" placeholder="Email">
+      <textarea data-i18n-placeholder="messagePlaceholder" placeholder="Message"></textarea>
+      <button class="btn" type="submit" data-i18n="sendMessage">Send Message</button>
+    </form>
+  </section>
 
-<div class="card center">
-<h3>Crypto</h3>
-<p>0x123456789abcdef...</p>
-</div>
+  <footer>
+    © 2026 Ibrahim Masood
+  </footer>
 
-</div>
-</section>
-
-<section id="contact" class="section dark">
-<h2 class="center">Let's Connect</h2>
-
-<form class="contact-form">
-<input placeholder="Name">
-<input placeholder="Email">
-<textarea placeholder="Message"></textarea>
-<button class="btn">Send Message</button>
-</form>
-
-</section>
-
-<footer>
-© 2026 Ibrahim Masood
-</footer>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
