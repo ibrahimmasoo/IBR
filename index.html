@@ -12,14 +12,27 @@
 <body>
 
 <nav class="navbar">
-<div class="logo">IM</div>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#support">Support</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+  <div class="logo">IBR</div>
+
+  <ul class="nav-links">
+    <li><a href="#home" data-i18n="home">Home</a></li>
+    <li><a href="#about" data-i18n="about">About</a></li>
+    <li><a href="#projects" data-i18n="projects">Projects</a></li>
+    <li><a href="#support" data-i18n="support">Support</a></li>
+    <li><a href="#contact" data-i18n="contact">Contact</a></li>
+  </ul>
+
+  <div class="top-controls">
+    <div class="lang-switcher">
+      <button onclick="setLanguage('en')">EN</button>
+      <button onclick="setLanguage('ar')">AR</button>
+      <button onclick="setLanguage('tr')">TR</button>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      ☀
+    </button>
+  </div>
 </nav>
 
 <section id="home" class="hero">
