@@ -523,3 +523,24 @@ body.light-mode .hero-name span:hover{
     max-width:420px;
   }
 }
+/* click shake animation */
+
+.hero-name span:active{
+  animation: letterShake .35s ease;
+}
+
+@keyframes letterShake{
+
+  0%{ transform: translateY(-18px) rotate(-8deg); }
+
+  20%{ transform: translateY(-18px) rotate(6deg); }
+
+  40%{ transform: translateY(-18px) rotate(-6deg); }
+
+  60%{ transform: translateY(-18px) rotate(4deg); }
+
+  80%{ transform: translateY(-18px) rotate(-2deg); }
+
+  100%{ transform: translateY(-18px) rotate(0deg); }
+
+}
