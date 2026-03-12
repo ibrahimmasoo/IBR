@@ -547,7 +547,7 @@ body.light-mode .hero-name span:hover{
 }
 /* click shake animation */
 .hero-name span.clicked-letter{
-  animation: letterShake 0.45s ease;
+  animation: letterShake 0.65s ease;
 }
 
 @keyframes letterShake{
