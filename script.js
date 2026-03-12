@@ -358,3 +358,18 @@ if (heroName) {
     });
   });
 }
+const clickableLetters = document.querySelectorAll("#heroName span:not(.space)");
+
+clickableLetters.forEach((letter) => {
+  letter.addEventListener("click", () => {
+    letter.classList.remove("clicked-letter");
+
+    void letter.offsetWidth; // restart animation
+
+    letter.classList.add("clicked-letter");
+
+    setTimeout(() => {
+      letter.classList.remove("clicked-letter");
+    }, 450);
+  });
+});
