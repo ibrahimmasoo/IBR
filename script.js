@@ -195,3 +195,30 @@ window.addEventListener("DOMContentLoaded", () => {
 
   setLanguage(savedLang);
 });
+const heroLetters = document.querySelectorAll("#heroName span:not(.space)");
+
+heroLetters.forEach((letter, index) => {
+  letter.addEventListener("mouseenter", () => {
+    heroLetters.forEach((l) => {
+      l.classList.remove("active-letter", "near-1", "near-2");
+    });
+
+    letter.classList.add("active-letter");
+
+    if (heroLetters[index - 1]) heroLetters[index - 1].classList.add("near-1");
+    if (heroLetters[index + 1]) heroLetters[index + 1].classList.add("near-1");
+
+    if (heroLetters[index - 2]) heroLetters[index - 2].classList.add("near-2");
+    if (heroLetters[index + 2]) heroLetters[index + 2].classList.add("near-2");
+  });
+});
+
+const heroName = document.getElementById("heroName");
+
+if (heroName) {
+  heroName.addEventListener("mouseleave", () => {
+    heroLetters.forEach((l) => {
+      l.classList.remove("active-letter", "near-1", "near-2");
+    });
+  });
+}
