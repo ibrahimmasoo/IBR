@@ -535,3 +535,32 @@ body.light-mode .hero-name span:hover{
     max-width:420px;
   }
 }
+/* hero image background */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1;
+}
+
+.hero-bg img{
+  height:90vh;
+  object-fit:contain;
+  opacity:.35;
+  filter:contrast(1.1) brightness(.9);
+}
+
+/* content above image */
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
