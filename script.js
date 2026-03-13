@@ -166,7 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const rotateX = -((y - centerY) / centerY) * 6;
       const rotateY = ((x - centerX) / centerX) * 6;
 
-      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+      card.style.transform =
+        `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
     });
 
     card.addEventListener("mouseleave", () => {
@@ -198,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         letter.classList.remove("clicked-letter");
-      }, 450);
+      }, 650);
     });
   });
 
