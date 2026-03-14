@@ -211,3 +211,92 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+/* ========================= */
+/* CHATBOT */
+/* ========================= */
+
+const chatbotToggle = document.getElementById("chatbotToggle");
+const chatbotClose = document.getElementById("chatbotClose");
+const chatbotBox = document.getElementById("chatbotBox");
+const chatbotForm = document.getElementById("chatbotForm");
+const chatbotInput = document.getElementById("chatbotInput");
+const chatbotMessages = document.getElementById("chatbotMessages");
+
+if (chatbotToggle && chatbotClose && chatbotBox && chatbotForm && chatbotInput && chatbotMessages) {
+  chatbotToggle.addEventListener("click", () => {
+    chatbotBox.classList.toggle("open");
+  });
+
+  chatbotClose.addEventListener("click", () => {
+    chatbotBox.classList.remove("open");
+  });
+
+  chatbotForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const question = chatbotInput.value.trim();
+    if (!question) return;
+
+    addMessage(question, "user");
+    chatbotInput.value = "";
+
+    setTimeout(() => {
+      const answer = getBotReply(question);
+      addMessage(answer, "bot");
+    }, 500);
+  });
+}
+
+function addMessage(text, sender) {
+  const message = document.createElement("div");
+  message.className = sender === "user" ? "user-message" : "bot-message";
+  message.textContent = text;
+  chatbotMessages.appendChild(message);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function getBotReply(question) {
+  const q = question.toLowerCase();
+
+  if (q.includes("who is ibrahim") || q.includes("about ibrahim") || q.includes("who are you")) {
+    return "Ibrahim Masood is a Computer Engineering student passionate about hardware, software, embedded systems, and digital innovation.";
+  }
+
+  if (q.includes("study") || q.includes("education") || q.includes("student")) {
+    return "Ibrahim is a Computer Engineering student with strong interest in embedded systems, digital logic, and full-stack engineering.";
+  }
+
+  if (q.includes("skills") || q.includes("what can he do") || q.includes("expertise")) {
+    return "His interests include embedded systems, FPGA, Verilog, ESP32, low-level firmware, hardware-software integration, and innovative engineering projects.";
+  }
+
+  if (q.includes("project") || q.includes("projects")) {
+    return "Some featured projects include an Autonomous Drone Controller using ESP32 and an FPGA Image Processor implemented in Verilog.";
+  }
+
+  if (q.includes("drone")) {
+    return "The Autonomous Drone Controller is a custom flight controller built with ESP32, featuring PID stabilization and real-time sensor fusion.";
+  }
+
+  if (q.includes("fpga") || q.includes("verilog")) {
+    return "The FPGA Image Processor is a hardware-accelerated image filtering project implemented in Verilog on an FPGA platform.";
+  }
+
+  if (q.includes("contact") || q.includes("email") || q.includes("reach")) {
+    return "You can contact Ibrahim using the contact section on this website.";
+  }
+
+  if (q.includes("support") || q.includes("donate")) {
+    return "You can support Ibrahim through the Support My Work section on the site.";
+  }
+
+  if (q.includes("language") || q.includes("arabic") || q.includes("turkish") || q.includes("english")) {
+    return "This portfolio supports multiple languages including English, Arabic, and Turkish.";
+  }
+
+  if (q.includes("hello") || q.includes("hi")) {
+    return "Hi there. Ask me anything about Ibrahim, his background, skills, or projects.";
+  }
+
+  return "I can answer questions about Ibrahim's background, skills, featured projects, support section, and contact information.";
+}
