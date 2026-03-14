@@ -40,7 +40,9 @@
     <div class="hero-content">
       <h1 class="hero-name">IBRAHIM MASOOD</h1>
 
-      <h2>Computer Engineering Student</h2>
+      <h2 class="typing-text">
+        <span id="typing"></span>
+      </h2>
 
       <p>Exploring hardware, software and digital innovation</p>
 
@@ -298,6 +300,20 @@
       chatbotMessages.appendChild(div);
       chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
+
+    const text = "Welcome Home";
+    const typingElement = document.getElementById("typing");
+    let i = 0;
+
+    function typeEffect() {
+      if (i < text.length) {
+        typingElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 80);
+      }
+    }
+
+    typeEffect();
   </script>
 </body>
 </html>
