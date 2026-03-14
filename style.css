@@ -639,13 +639,60 @@ footer{
   opacity:1;
 }
 
+/* FIXED HERO NAME ANIMATION */
 .hero-name{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-  gap:0.02em;
+  display:block;
+  text-align:center;
+  width:100%;
   user-select:none;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  line-height:1;
+  background:linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #7d7d7d 18%,
+    #ffffff 35%,
+    #d8d8d8 50%,
+    #ffffff 65%,
+    #8a8a8a 82%,
+    #ffffff 100%
+  );
+  background-size:250% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  animation:nameShine 4s linear infinite;
+  text-shadow:0 0 18px rgba(255,255,255,.08);
+}
+
+body.light-mode .hero-name{
+  background:linear-gradient(
+    90deg,
+    #111111 0%,
+    #666666 18%,
+    #111111 35%,
+    #555555 50%,
+    #111111 65%,
+    #777777 82%,
+    #111111 100%
+  );
+  background-size:250% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  text-shadow:none;
+}
+
+@keyframes nameShine{
+  0%{
+    background-position:0% center;
+  }
+  100%{
+    background-position:250% center;
+  }
 }
 
 .chatbot{
@@ -924,5 +971,11 @@ body.light-mode .bot-message{
   .chatbot-toggle{
     width:56px;
     height:56px;
+  }
+}
+
+@media (max-width:600px){
+  .hero-name{
+    letter-spacing:2px;
   }
 }
