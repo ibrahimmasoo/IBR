@@ -151,22 +151,55 @@
     </div>
   </section>
 
-  <section id="contact" class="section dark">
-    <h2 class="center">Let's Connect</h2>
+  <section id="contact" class="talk-section">
+    <div class="talk-wrapper">
+      <div class="talk-left">
+        <p class="talk-label">CONTACT</p>
+        <h2 class="talk-title">LET'S TALK</h2>
+        <p class="talk-text">
+          I'm always open to new opportunities, collaborations, or just a friendly
+          chat about engineering.
+        </p>
 
-    <form class="contact-form">
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <textarea placeholder="Message"></textarea>
-      <button class="btn" type="submit">Send Message</button>
-    </form>
+        <div class="talk-links">
+          <a href="mailto:your@email.com" class="talk-item">
+            <div class="talk-icon">✉</div>
+            <span>EMAIL</span>
+          </a>
+
+          <a href="https://github.com/yourusername" target="_blank" class="talk-item">
+            <div class="talk-icon">⌘</div>
+            <span>GITHUB</span>
+          </a>
+
+          <a href="https://linkedin.com/in/yourusername" target="_blank" class="talk-item">
+            <div class="talk-icon">in</div>
+            <span>LINKEDIN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="talk-right">
+        <form class="talk-form">
+          <label for="talkName">NAME</label>
+          <input id="talkName" type="text" placeholder="Your Name">
+
+          <label for="talkEmail">EMAIL</label>
+          <input id="talkEmail" type="email" placeholder="Your Email">
+
+          <label for="talkMessage">MESSAGE</label>
+          <textarea id="talkMessage" placeholder="Your Message"></textarea>
+
+          <button type="submit" class="talk-btn">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <footer>
     © 2026 Ibrahim Masood
   </footer>
 
-  <!-- CHATBOT -->
   <div class="chatbot">
     <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat assistant">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -180,7 +213,7 @@
           <h3>IBR AI Assistant</h3>
           <p>Ask me anything about Ibrahim</p>
         </div>
-        <button class="chatbot-close" id="chatbotClose">✕</button>
+        <button class="chatbot-close" id="chatbotClose" type="button">✕</button>
       </div>
 
       <div class="chatbot-messages" id="chatbotMessages">
@@ -197,14 +230,12 @@
   </div>
 
   <script>
-    // theme toggle
     const themeToggle = document.getElementById("themeToggle");
     themeToggle.addEventListener("click", () => {
       document.body.classList.toggle("light-mode");
       themeToggle.textContent = document.body.classList.contains("light-mode") ? "☾" : "☀";
     });
 
-    // reveal on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -213,11 +244,10 @@
       });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll(".section, .card, .project-card").forEach(el => {
+    document.querySelectorAll(".section, .card, .project-card, .talk-section").forEach(el => {
       observer.observe(el);
     });
 
-    // chatbot
     const chatbotToggle = document.getElementById("chatbotToggle");
     const chatbotClose = document.getElementById("chatbotClose");
     const chatbotBox = document.getElementById("chatbotBox");
