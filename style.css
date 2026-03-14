@@ -1174,3 +1174,21 @@ body.light-mode .talk-btn{
     font-size:16px;
   }
 }
+.typing-text{
+  font-size:clamp(28px,2.6vw,54px);
+  font-weight:300;
+  margin-top:18px;
+  letter-spacing:2px;
+}
+
+#typing::after{
+  content:"|";
+  margin-left:5px;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%{opacity:1;}
+  50%{opacity:0;}
+  100%{opacity:1;}
+}
