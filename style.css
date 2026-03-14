@@ -926,3 +926,251 @@ body.light-mode .bot-message{
     height:56px;
   }
 }
+.talk-section{
+  padding:140px 6% 120px;
+  background:#000;
+  color:#fff;
+}
+
+.talk-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:start;
+}
+
+.talk-left{
+  padding-top:10px;
+}
+
+.talk-label{
+  font-size:14px;
+  letter-spacing:3px;
+  color:rgba(255,255,255,.65);
+  margin-bottom:20px;
+}
+
+.talk-title{
+  font-size:clamp(56px,8vw,120px);
+  line-height:.95;
+  font-weight:800;
+  margin-bottom:26px;
+  letter-spacing:-2px;
+}
+
+.talk-text{
+  font-size:clamp(20px,1.8vw,34px);
+  line-height:1.5;
+  color:rgba(255,255,255,.72);
+  max-width:780px;
+  margin-bottom:55px;
+}
+
+.talk-links{
+  display:flex;
+  gap:34px;
+  flex-wrap:wrap;
+}
+
+.talk-item{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:14px;
+  text-decoration:none;
+  color:#fff;
+}
+
+.talk-icon{
+  width:84px;
+  height:84px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  transition:all .35s ease;
+}
+
+.talk-item span{
+  font-size:18px;
+  letter-spacing:2px;
+  color:rgba(255,255,255,.72);
+  transition:all .35s ease;
+}
+
+.talk-item:hover .talk-icon{
+  transform:translateY(-6px) scale(1.05);
+  border-color:rgba(255,255,255,.35);
+}
+
+.talk-item:hover span{
+  color:#fff;
+}
+
+.talk-right{
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:34px;
+  padding:42px;
+}
+
+.talk-form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.talk-form label{
+  font-size:14px;
+  letter-spacing:2px;
+  color:rgba(255,255,255,.62);
+}
+
+.talk-form input,
+.talk-form textarea{
+  width:100%;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:20px 22px;
+  color:#fff;
+  font-size:16px;
+  outline:none;
+  transition:all .3s ease;
+}
+
+.talk-form input::placeholder,
+.talk-form textarea::placeholder{
+  color:rgba(255,255,255,.45);
+}
+
+.talk-form input:focus,
+.talk-form textarea:focus{
+  border-color:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.05);
+}
+
+.talk-form textarea{
+  min-height:160px;
+  resize:vertical;
+}
+
+.talk-btn{
+  margin-top:18px;
+  width:100%;
+  border:none;
+  background:#fff;
+  color:#000;
+  padding:22px;
+  border-radius:20px;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:2px;
+  cursor:pointer;
+  transition:all .35s ease;
+}
+
+.talk-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(0,0,0,.3);
+}
+
+body.light-mode .talk-section{
+  background:#f5f5f5;
+  color:#111;
+}
+
+body.light-mode .talk-label{
+  color:rgba(0,0,0,.55);
+}
+
+body.light-mode .talk-text{
+  color:rgba(0,0,0,.68);
+}
+
+body.light-mode .talk-item{
+  color:#111;
+}
+
+body.light-mode .talk-icon{
+  border:1px solid rgba(0,0,0,.12);
+}
+
+body.light-mode .talk-item span{
+  color:rgba(0,0,0,.65);
+}
+
+body.light-mode .talk-item:hover span{
+  color:#111;
+}
+
+body.light-mode .talk-right{
+  background:rgba(0,0,0,.02);
+  border:1px solid rgba(0,0,0,.08);
+}
+
+body.light-mode .talk-form label{
+  color:rgba(0,0,0,.55);
+}
+
+body.light-mode .talk-form input,
+body.light-mode .talk-form textarea{
+  background:rgba(0,0,0,.025);
+  border:1px solid rgba(0,0,0,.08);
+  color:#111;
+}
+
+body.light-mode .talk-form input::placeholder,
+body.light-mode .talk-form textarea::placeholder{
+  color:rgba(0,0,0,.42);
+}
+
+body.light-mode .talk-btn{
+  background:#111;
+  color:#fff;
+}
+
+@media (max-width: 980px){
+  .talk-wrapper{
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .talk-right{
+    padding:28px;
+  }
+}
+
+@media (max-width: 768px){
+  .talk-section{
+    padding:110px 7% 100px;
+  }
+
+  .talk-links{
+    gap:22px;
+  }
+
+  .talk-icon{
+    width:72px;
+    height:72px;
+    font-size:24px;
+  }
+
+  .talk-item span{
+    font-size:16px;
+  }
+
+  .talk-form input,
+  .talk-form textarea{
+    padding:16px 18px;
+    border-radius:14px;
+  }
+
+  .talk-btn{
+    padding:18px;
+    border-radius:16px;
+    font-size:16px;
+  }
+}
