@@ -17,6 +17,7 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#support">Support</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -80,7 +81,7 @@
     </div>
   </section>
 
-  <section id="projects" class="projects-section">
+  <section id="projects" class="projects-section section">
     <div class="projects-header">
       <h2>My Projects</h2>
       <p>
@@ -127,6 +128,42 @@
           </div>
 
           <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery-section section">
+    <div class="container">
+      <div class="gallery-header">
+        <h2>My Gallery</h2>
+        <p>A visual journey through my engineering projects and creative explorations.</p>
+        <span class="gallery-line"></span>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item tall">
+          <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1200&q=80" alt="Gallery Image 1">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Gallery Image 2">
+        </div>
+
+        <div class="gallery-item tall">
+          <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80" alt="Gallery Image 3">
+        </div>
+
+        <div class="gallery-item wide">
+          <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1200&q=80" alt="Gallery Image 4">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200&q=80" alt="Gallery Image 5">
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1200&q=80" alt="Gallery Image 6">
         </div>
       </div>
     </div>
@@ -249,7 +286,7 @@
       });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll(".section, .card, .project-card, .talk-section").forEach(el => {
+    document.querySelectorAll(".section, .card, .project-card, .talk-section, .gallery-item").forEach(el => {
       observer.observe(el);
     });
 
@@ -287,6 +324,8 @@
         reply = "His skills include FPGA, Verilog, Embedded Systems, ESP32, and hardware/software engineering.";
       } else if (msg.includes("project")) {
         reply = "He built projects like an Autonomous Drone Controller and an FPGA Image Processor.";
+      } else if (msg.includes("gallery")) {
+        reply = "The gallery section highlights visual snapshots from Ibrahim's engineering journey and creative work.";
       } else if (msg.includes("contact") || msg.includes("email")) {
         reply = "You can contact Ibrahim through the contact form on this website.";
       } else if (msg.includes("study") || msg.includes("education") || msg.includes("student")) {
