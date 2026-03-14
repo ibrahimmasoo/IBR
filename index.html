@@ -1,364 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ibrahim Masood Portfolio</title>
-
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<style>
-
-/* CHAT BOT */
-.chatbot{
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 9999;
-}
-
-.chatbot-btn{
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.22);
-  background: #0d0d0d;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-  transition: all .3s ease;
-}
-
-.chatbot-btn:hover{
-  transform: translateY(-3px) scale(1.08);
-  background: #ffffff;
-  color: #000000;
-}
-
-.chatbot-btn svg{
-  width: 24px;
-  height: 24px;
-}
-
-.chatbox{
-  position: absolute;
-  bottom: 75px;
-  right: 0;
-  width: 320px;
-  height: 420px;
-  background: #111;
-  color: #fff;
-  border-radius: 15px;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.15);
-  box-shadow: 0 20px 50px rgba(0,0,0,.35);
-}
-
-.chatbox.active{
-  display: flex;
-}
-
-.chat-header{
-  padding: 15px;
-  background: #000;
-  font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,.1);
-}
-
-.chat-messages{
-  flex: 1;
-  padding: 12px;
-  overflow-y: auto;
-  font-size: 14px;
-}
-
-.bot{
-  background: #222;
-  padding: 8px 12px;
-  border-radius: 10px;
-  margin-bottom: 8px;
-  max-width: 85%;
-}
-
-.user{
-  background: #fff;
-  color: #000;
-  padding: 8px 12px;
-  border-radius: 10px;
-  margin-bottom: 8px;
-  margin-left: auto;
-  max-width: 85%;
-}
-
-.chat-input{
-  display: flex;
-  border-top: 1px solid rgba(255,255,255,.1);
-}
-
-.chat-input input{
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-  background: #000;
-  color: #fff;
-}
-
-.chat-input button{
-  border: none;
-  padding: 10px 15px;
-  background: #fff;
-  color: #000;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-@media (max-width: 768px){
-  .chatbot{
-    right: 16px;
-    bottom: 16px;
-  }
-
-  .chatbox{
-    width: 300px;
-    max-width: calc(100vw - 24px);
-  }
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibrahim Masood Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="logo">IBR</div>
+  <nav class="navbar">
+    <div class="logo">IBR</div>
 
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#support">Support</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#support">Support</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
 
-  <div class="top-controls">
-    <div class="lang-switcher">
-      <button>EN</button>
-      <button>AR</button>
-      <button>TR</button>
+    <div class="top-controls">
+      <div class="lang-switcher">
+        <button type="button">EN</button>
+        <button type="button">AR</button>
+        <button type="button">TR</button>
+      </div>
+
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <img src="me.jpeg" alt="Ibrahim Masood">
     </div>
 
-    <button class="theme-toggle">☀</button>
-  </div>
-</nav>
+    <div class="hero-content">
+      <h1 class="hero-name">IBRAHIM MASOOD</h1>
 
-<section id="home" class="hero">
-  <div class="hero-bg">
-    <img src="me.jpeg" alt="Ibrahim Masood">
-  </div>
+      <h2>Computer Engineering Student</h2>
 
-  <div class="hero-content">
-    <h1 class="hero-name">
-      IBRAHIM MASOOD
-    </h1>
+      <p>Exploring hardware, software and digital innovation</p>
 
-    <h2>Computer Engineering Student</h2>
-
-    <p>
-      Exploring hardware, software and digital innovation
-    </p>
-
-    <a href="#about" class="btn">Explore</a>
-  </div>
-</section>
-
-<section id="about" class="section about-section">
-  <div class="about-grid">
-    <div class="about-text">
-      <h2 class="about-title">About Me</h2>
-
-      <p class="about-subtitle">
-        Bridging the gap between physical hardware and digital logic.
-      </p>
-
-      <div class="about-line"></div>
-
-      <p>
-        I'm a Computer Engineering student with a fascination for the intersection of hardware and software.
-      </p>
-
-      <p>
-        My passion lies in embedded systems, digital logic design and innovative technology.
-      </p>
-
-      <a href="#contact" class="btn about-btn">
-        Get in touch
-      </a>
+      <a href="#about" class="btn">Explore</a>
     </div>
+  </section>
 
-    <div class="about-image-wrap">
-      <div class="about-image-frame"></div>
-      <img src="me.jpeg" alt="Ibrahim Masood" class="about-image">
-    </div>
-  </div>
-</section>
+  <section id="about" class="section about-section">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="about-title">About Me</h2>
 
-<section id="projects" class="projects-section">
-  <div class="projects-header">
-    <h2>My Projects</h2>
-
-    <p>
-      A showcase of hardware, software, and embedded systems engineering.
-    </p>
-
-    <div class="projects-line"></div>
-  </div>
-
-  <div class="projects-grid">
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Autonomous Drone Controller">
-
-      <div class="project-content">
-        <div class="project-icon">⚙</div>
-
-        <h3>Autonomous Drone Controller</h3>
-
-        <p>
-          A custom flight controller built with ESP32 featuring PID stabilization.
+        <p class="about-subtitle">
+          Bridging the gap between physical hardware and digital logic.
         </p>
 
-        <div class="project-tags">
-          <span>C++</span>
-          <span>ESP32</span>
-          <span>Embedded</span>
-        </div>
-
-        <a class="project-btn">VIEW PROJECT</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="FPGA Image Processor">
-
-      <div class="project-content">
-        <div class="project-icon">▣</div>
-
-        <h3>FPGA Image Processor</h3>
+        <div class="about-line"></div>
 
         <p>
-          Hardware accelerated image filtering implemented in Verilog.
+          I'm a Computer Engineering student with a fascination for the intersection
+          of hardware and software.
         </p>
 
-        <div class="project-tags">
-          <span>Verilog</span>
-          <span>FPGA</span>
-          <span>Hardware</span>
+        <p>
+          My passion lies in embedded systems, digital logic design, and innovative technology.
+        </p>
+
+        <a href="#contact" class="btn about-btn">Get in touch</a>
+      </div>
+
+      <div class="about-image-wrap">
+        <div class="about-image-frame"></div>
+        <img src="me.jpeg" alt="Ibrahim Masood" class="about-image">
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section">
+    <div class="projects-header">
+      <h2>My Projects</h2>
+      <p>
+        A showcase of hardware, software, and embedded systems engineering.
+      </p>
+      <div class="projects-line"></div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Autonomous Drone Controller">
+
+        <div class="project-content">
+          <div class="project-icon">⚙</div>
+          <h3>Autonomous Drone Controller</h3>
+          <p>
+            A custom flight controller built with ESP32 featuring PID stabilization.
+          </p>
+
+          <div class="project-tags">
+            <span>C++</span>
+            <span>ESP32</span>
+            <span>Embedded</span>
+          </div>
+
+          <a href="#" class="project-btn">VIEW PROJECT</a>
         </div>
+      </div>
 
-        <a class="project-btn">VIEW PROJECT</a>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="FPGA Image Processor">
+
+        <div class="project-content">
+          <div class="project-icon">▣</div>
+          <h3>FPGA Image Processor</h3>
+          <p>
+            Hardware accelerated image filtering implemented in Verilog.
+          </p>
+
+          <div class="project-tags">
+            <span>Verilog</span>
+            <span>FPGA</span>
+            <span>Hardware</span>
+          </div>
+
+          <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact" class="section dark">
-  <h2 class="center">Let's Connect</h2>
+  <section id="support" class="section">
+    <h2 class="center">Support My Work</h2>
 
-  <form class="contact-form">
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
-    <textarea placeholder="Message"></textarea>
-    <button class="btn">Send Message</button>
-  </form>
-</section>
+    <div class="grid">
+      <div class="card center">
+        <h3>Buy Me a Coffee</h3>
+        <button type="button" class="btn">Donate</button>
+      </div>
 
-<footer>
-  © 2026 Ibrahim Masood
-</footer>
+      <div class="card center">
+        <h3>PayPal</h3>
+        <button type="button" class="btn">Donate</button>
+      </div>
 
-<!-- AI CHATBOT -->
-<div class="chatbot">
-
-  <button class="chatbot-btn" onclick="toggleChat()" aria-label="Open chat assistant">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
-    </svg>
-  </button>
-
-  <div class="chatbox" id="chatbox">
-    <div class="chat-header">
-      IBR AI Assistant
-    </div>
-
-    <div class="chat-messages" id="messages">
-      <div class="bot">
-        Hi! Ask me anything about Ibrahim.
+      <div class="card center">
+        <h3>Crypto</h3>
+        <p>0x123456789abcdef...</p>
       </div>
     </div>
+  </section>
 
-    <div class="chat-input">
-      <input id="userInput" placeholder="Ask about Ibrahim...">
-      <button onclick="sendMessage()">Send</button>
+  <section id="contact" class="section dark">
+    <h2 class="center">Let's Connect</h2>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <textarea placeholder="Message"></textarea>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2026 Ibrahim Masood
+  </footer>
+
+  <!-- CHATBOT -->
+  <div class="chatbot">
+    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat assistant">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+      </svg>
+    </button>
+
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="chatbot-header">
+        <div>
+          <h3>IBR AI Assistant</h3>
+          <p>Ask me anything about Ibrahim</p>
+        </div>
+        <button class="chatbot-close" id="chatbotClose">✕</button>
+      </div>
+
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="bot-message">
+          Hi! Ask me anything about Ibrahim.
+        </div>
+      </div>
+
+      <form class="chatbot-input-area" id="chatbotForm">
+        <input id="chatbotInput" type="text" placeholder="Ask about Ibrahim..." autocomplete="off">
+        <button type="submit">Send</button>
+      </form>
     </div>
   </div>
 
-</div>
+  <script>
+    // theme toggle
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      themeToggle.textContent = document.body.classList.contains("light-mode") ? "☾" : "☀";
+    });
 
-<script>
-function toggleChat(){
-  document.getElementById("chatbox").classList.toggle("active");
-}
+    // reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show-section");
+        }
+      });
+    }, { threshold: 0.15 });
 
-function sendMessage(){
-  let input = document.getElementById("userInput");
-  let rawMsg = input.value.trim();
-  let msg = rawMsg.toLowerCase();
+    document.querySelectorAll(".section, .card, .project-card").forEach(el => {
+      observer.observe(el);
+    });
 
-  if(msg === "") return;
+    // chatbot
+    const chatbotToggle = document.getElementById("chatbotToggle");
+    const chatbotClose = document.getElementById("chatbotClose");
+    const chatbotBox = document.getElementById("chatbotBox");
+    const chatbotForm = document.getElementById("chatbotForm");
+    const chatbotInput = document.getElementById("chatbotInput");
+    const chatbotMessages = document.getElementById("chatbotMessages");
 
-  let messages = document.getElementById("messages");
+    chatbotToggle.addEventListener("click", () => {
+      chatbotBox.classList.toggle("open");
+    });
 
-  messages.innerHTML += `<div class="user">${rawMsg}</div>`;
+    chatbotClose.addEventListener("click", () => {
+      chatbotBox.classList.remove("open");
+    });
 
-  let reply = "Ask me about Ibrahim's projects, skills, or contact information.";
+    chatbotForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-  if(msg.includes("who") || msg.includes("about")){
-    reply = "Ibrahim Masood is a Computer Engineering student passionate about hardware, embedded systems, and digital innovation.";
-  }
+      const rawMsg = chatbotInput.value.trim();
+      const msg = rawMsg.toLowerCase();
 
-  if(msg.includes("skills")){
-    reply = "His skills include FPGA, Verilog, Embedded Systems, ESP32, and hardware/software engineering.";
-  }
+      if (!rawMsg) return;
 
-  if(msg.includes("project")){
-    reply = "He built projects like an Autonomous Drone Controller and an FPGA Image Processor.";
-  }
+      addMessage(rawMsg, "user");
+      chatbotInput.value = "";
 
-  if(msg.includes("contact") || msg.includes("email")){
-    reply = "You can contact Ibrahim through the contact form on this website.";
-  }
+      let reply = "Ask me about Ibrahim's projects, skills, background, or contact information.";
 
-  messages.innerHTML += `<div class="bot">${reply}</div>`;
+      if (msg.includes("who") || msg.includes("about")) {
+        reply = "Ibrahim Masood is a Computer Engineering student passionate about hardware, embedded systems, and digital innovation.";
+      } else if (msg.includes("skills")) {
+        reply = "His skills include FPGA, Verilog, Embedded Systems, ESP32, and hardware/software engineering.";
+      } else if (msg.includes("project")) {
+        reply = "He built projects like an Autonomous Drone Controller and an FPGA Image Processor.";
+      } else if (msg.includes("contact") || msg.includes("email")) {
+        reply = "You can contact Ibrahim through the contact form on this website.";
+      } else if (msg.includes("study") || msg.includes("education") || msg.includes("student")) {
+        reply = "Ibrahim is a Computer Engineering student with interests in embedded systems and digital logic design.";
+      }
 
-  input.value = "";
-  messages.scrollTop = messages.scrollHeight;
-}
+      setTimeout(() => addMessage(reply, "bot"), 300);
+    });
 
-document.getElementById("userInput").addEventListener("keypress", function(e){
-  if(e.key === "Enter"){
-    sendMessage();
-  }
-});
-</script>
-
-<script src="script.js"></script>
-
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = sender === "user" ? "user-message" : "bot-message";
+      div.textContent = text;
+      chatbotMessages.appendChild(div);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+  </script>
 </body>
 </html>
