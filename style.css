@@ -34,12 +34,12 @@ html{
 body{
   color:var(--text);
   line-height:1.6;
-  transition:background .3s ease, color .3s ease;
-  background-color:#050505;
+  transition: background .3s ease, color .3s ease;
+  background-color: var(--bg);
   background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255,255,255,.45) 1.4px, transparent 1.45px);
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,.22) 1.1px, transparent 1.2px);
   background-size:
     52px 52px,
     52px 52px,
@@ -48,15 +48,15 @@ body{
     0 0,
     0 0,
     26px 26px;
-  background-attachment:fixed;
+  background-attachment: fixed;
 }
 
 body.light-mode{
-  background-color:#f5f5f5;
+  background-color: var(--bg);
   background-image:
     linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px),
-    radial-gradient(circle, rgba(0,0,0,.28) 1.4px, transparent 1.45px);
+    radial-gradient(circle, rgba(0,0,0,.18) 1.1px, transparent 1.2px);
   background-size:
     52px 52px,
     52px 52px,
@@ -65,7 +65,7 @@ body.light-mode{
     0 0,
     0 0,
     26px 26px;
-  background-attachment:fixed;
+  background-attachment: fixed;
 }
 
 a,
@@ -226,7 +226,7 @@ body.light-mode .theme-toggle{
   padding:120px 20px 40px;
   position:relative;
   overflow:hidden;
-  background:transparent !important;
+  background:transparent;
 }
 
 .hero h1{
@@ -292,11 +292,11 @@ body.light-mode .theme-toggle{
 
 .section{
   padding:120px 10%;
-  background:transparent !important;
+  background:transparent;
 }
 
 .dark{
-  background:transparent !important;
+  background:transparent;
 }
 
 .center{
@@ -322,7 +322,7 @@ body.light-mode .theme-toggle{
 
 .about-section{
   padding:140px 6% 120px;
-  background:transparent !important;
+  background:transparent;
 }
 
 .about-grid{
@@ -412,7 +412,7 @@ body.light-mode .about-image:hover{
 
 .projects-section{
   padding:140px 8%;
-  background:transparent !important;
+  background:transparent;
   color:var(--text);
 }
 
@@ -626,7 +626,7 @@ footer{
   text-align:center;
   padding:40px;
   opacity:.6;
-  background:transparent !important;
+  background:transparent;
 }
 
 .section,
@@ -657,52 +657,52 @@ footer{
 }
 
 .chatbot{
-  position:fixed;
-  right:24px;
-  bottom:24px;
-  z-index:2000;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2000;
 }
 
 .chatbot-toggle{
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.22);
-  background:#0d0d0d;
-  color:#ffffff;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.22);
+  background: #0d0d0d;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
 .chatbot-toggle:hover{
-  transform:translateY(-3px) scale(1.08);
-  background:#ffffff;
-  color:#000000;
+  transform: translateY(-3px) scale(1.08);
+  background: #ffffff;
+  color: #000000;
 }
 
 .chatbot-toggle svg{
-  width:24px;
-  height:24px;
+  width: 24px;
+  height: 24px;
 }
 
 .chatbot-box{
-  position:absolute;
-  right:0;
-  bottom:76px;
-  width:360px;
-  max-width:calc(100vw - 24px);
-  height:500px;
-  background:var(--card);
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 25px 60px rgba(0,0,0,.35);
-  display:none;
-  flex-direction:column;
+  position: absolute;
+  right: 0;
+  bottom: 76px;
+  width: 360px;
+  max-width: calc(100vw - 24px);
+  height: 500px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  display: none;
+  flex-direction: column;
 }
 
 .chatbot-box.open{
@@ -812,12 +812,12 @@ body.light-mode .bot-message{
 
 .talk-section{
   padding:140px 6% 120px;
-  background:transparent !important;
+  background:transparent;
   color:#fff;
 }
 
 body.light-mode .talk-section{
-  background:transparent !important;
+  background:transparent;
   color:#111;
 }
 
@@ -1038,7 +1038,7 @@ body.light-mode .talk-btn{
 
 .gallery-section{
   padding:100px 8%;
-  background:transparent !important;
+  background:transparent;
   color:var(--text);
 }
 
