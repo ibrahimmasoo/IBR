@@ -300,3 +300,17 @@ function getBotReply(question) {
 
   return "I can answer questions about Ibrahim's background, skills, featured projects, support section, and contact information.";
 }
+const text = "Welcome Home";
+const typingElement = document.getElementById("typing");
+
+let i = 0;
+
+function typeEffect(){
+  if(i < text.length){
+    typingElement.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 80);
+  }
+}
+
+typeEffect();
