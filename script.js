@@ -314,3 +314,12 @@ function typeEffect(){
 }
 
 typeEffect();
+const logoLink = document.getElementById("logoLink");
+
+logoLink.addEventListener("click", function(e) {
+  e.preventDefault();
+
+  document.querySelector("#home").scrollIntoView({
+    behavior: "smooth"
+  });
+});
