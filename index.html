@@ -57,18 +57,25 @@
         <h2 class="about-title">About Me</h2>
 
         <p class="about-subtitle">
-          Bridging the gap between physical hardware and digital logic.
+          Bridging identity, engineering, and creativity into one journey.
         </p>
 
         <div class="about-line"></div>
 
         <p>
-          I'm a Computer Engineering student with a fascination for the intersection
-          of hardware and software.
+          My name is Ibrahim Ashraf Ibrahim Masoud, aka IBR. I was born on December 28, 2001, in Saudi Arabia, but I am Egyptian, born to Egyptian parents.
         </p>
 
         <p>
-          My passion lies in embedded systems, digital logic design, and innovative technology.
+          I am currently studying Computer Engineering at Bartın University in Turkey. I have completed several projects, which you can find in the "My Projects" section below on this page.
+        </p>
+
+        <p>
+          I love the color black and I love art in all its forms. As a child, my favorite hobby was drawing.
+        </p>
+
+        <p>
+          If you would like to learn more about me, you can follow me on my social media platforms.
         </p>
 
         <a href="#contact" class="btn about-btn">Get in touch</a>
@@ -319,17 +326,21 @@
       let reply = "Ask me about Ibrahim's projects, skills, background, or contact information.";
 
       if (msg.includes("who") || msg.includes("about")) {
-        reply = "Ibrahim Masood is a Computer Engineering student passionate about hardware, embedded systems, and digital innovation.";
+        reply = "Ibrahim Ashraf Ibrahim Masoud, also known as IBR, is an Egyptian Computer Engineering student at Bartın University in Turkey.";
       } else if (msg.includes("skills")) {
         reply = "His skills include FPGA, Verilog, Embedded Systems, ESP32, and hardware/software engineering.";
       } else if (msg.includes("project")) {
-        reply = "He built projects like an Autonomous Drone Controller and an FPGA Image Processor.";
+        reply = "You can explore Ibrahim's completed work in the My Projects section on this website.";
       } else if (msg.includes("gallery")) {
         reply = "The gallery section highlights visual snapshots from Ibrahim's engineering journey and creative work.";
       } else if (msg.includes("contact") || msg.includes("email")) {
-        reply = "You can contact Ibrahim through the contact form on this website.";
+        reply = "You can contact Ibrahim through the contact form on this website or through his social media platforms.";
       } else if (msg.includes("study") || msg.includes("education") || msg.includes("student")) {
-        reply = "Ibrahim is a Computer Engineering student with interests in embedded systems and digital logic design.";
+        reply = "Ibrahim is currently studying Computer Engineering at Bartın University in Turkey.";
+      } else if (msg.includes("art") || msg.includes("draw") || msg.includes("drawing")) {
+        reply = "Ibrahim loves art in all its forms, and drawing was his favorite hobby as a child.";
+      } else if (msg.includes("color") || msg.includes("black")) {
+        reply = "His favorite color is black.";
       }
 
       setTimeout(() => addMessage(reply, "bot"), 300);
