@@ -1422,3 +1422,51 @@ body.light-mode .gallery-item{
   font-weight:800;
   letter-spacing:3px;
 }
+.hero-name{
+  font-size:clamp(50px,8vw,120px);
+  font-weight:800;
+  letter-spacing:3px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:2px;
+  line-height:1;
+}
+
+.hero-name span{
+  display:inline-block;
+  cursor:pointer;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    text-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.hero-name span:hover{
+  transform:translateY(-12px) scale(1.08) rotate(-4deg);
+  text-shadow:0 0 18px rgba(255,255,255,0.45);
+}
+
+.hero-name .space{
+  width:22px;
+  cursor:default;
+}
+
+.hero-name .space:hover{
+  transform:none;
+  text-shadow:none;
+}
+
+.hero-name span.shake{
+  animation:letterShake 0.35s ease;
+}
+
+@keyframes letterShake{
+  0%   { transform:translateX(0) rotate(0); }
+  20%  { transform:translateX(-3px) rotate(-6deg); }
+  40%  { transform:translateX(3px) rotate(6deg); }
+  60%  { transform:translateX(-3px) rotate(-4deg); }
+  80%  { transform:translateX(3px) rotate(4deg); }
+  100% { transform:translateX(0) rotate(0); }
+}
