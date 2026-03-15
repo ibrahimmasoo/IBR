@@ -323,3 +323,14 @@ logoLink.addEventListener("click", function(e) {
     behavior: "smooth"
   });
 });
+const heroLetters = document.querySelectorAll("#heroName span");
+
+heroLetters.forEach(letter => {
+  if (!letter.classList.contains("space")) {
+    letter.addEventListener("click", () => {
+      letter.classList.remove("shake");
+      void letter.offsetWidth;
+      letter.classList.add("shake");
+    });
+  }
+});
