@@ -1638,8 +1638,8 @@ body.light-mode .hero-name span:hover{
   --platform-color:#1877F2;
 }
 
-.platform-item.discord{
-  --platform-color:#5865F2;
+.platform-item.linktree{
+  --platform-color:#39ff14;
 }
 
 .platform-item.tiktok{
