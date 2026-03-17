@@ -414,6 +414,8 @@ body.light-mode .about-image:hover{
   padding:140px 8%;
   background:transparent;
   color:var(--text);
+  opacity:1;
+  transform:none;
 }
 
 .projects-header-row{
@@ -495,6 +497,8 @@ body.light-mode .about-image:hover{
   border:1px solid var(--border);
   position:relative;
   backdrop-filter:blur(2px);
+  opacity:1;
+  transform:none;
 }
 
 body.light-mode .project-card{
@@ -669,8 +673,7 @@ footer{
 }
 
 .section,
-.card,
-.project-card{
+.card{
   opacity:0;
   transform:translateY(40px);
   transition:opacity .7s ease, transform .7s ease, background .35s ease, color .35s ease;
