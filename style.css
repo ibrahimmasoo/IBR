@@ -416,6 +416,13 @@ body.light-mode .about-image:hover{
   color:var(--text);
 }
 
+.projects-header-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:30px;
+}
+
 .projects-header{
   max-width:900px;
 }
@@ -440,6 +447,38 @@ body.light-mode .about-image:hover{
   height:5px;
   background:var(--text);
   border-radius:999px;
+}
+
+.view-more-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--text);
+  text-decoration:none;
+  font-size:clamp(20px,1.6vw,32px);
+  font-weight:700;
+  white-space:nowrap;
+  margin-top:18px;
+  opacity:.95;
+  transition:transform .3s ease, opacity .3s ease, color .3s ease;
+}
+
+.view-more-link::after{
+  display:none !important;
+}
+
+.view-more-link i{
+  font-size:1.2em;
+  transition:transform .3s ease;
+}
+
+.view-more-link:hover{
+  opacity:1;
+  transform:translateX(4px);
+}
+
+.view-more-link:hover i{
+  transform:translateX(6px);
 }
 
 .projects-grid{
@@ -1183,6 +1222,15 @@ body.light-mode .gallery-item{
   .container img{
     width:100%;
     max-width:420px;
+  }
+
+  .projects-header-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .view-more-link{
+    margin-top:8px;
   }
 
   .projects-grid{
