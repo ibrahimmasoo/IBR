@@ -1615,7 +1615,7 @@ body.light-mode .hero-name span:hover{
 
 /* Platform colors */
 .platform-item.github{
-  --platform-color:#111111;
+  --platform-color:#ffffff;
 }
 
 .platform-item.linkedin{
@@ -1623,7 +1623,7 @@ body.light-mode .hero-name span:hover{
 }
 
 .platform-item.twitter{
-  --platform-color:#111111;
+  --platform-color:#ffffff;
 }
 
 .platform-item.instagram{
@@ -1644,6 +1644,15 @@ body.light-mode .hero-name span:hover{
 
 .platform-item.tiktok{
   --platform-color:#ff0050;
+}
+
+/* light mode only */
+body.light-mode .platform-item.github{
+  --platform-color:#111111;
+}
+
+body.light-mode .platform-item.twitter{
+  --platform-color:#111111;
 }
 
 @media (max-width:1200px){
@@ -1746,21 +1755,4 @@ body.light-mode .platform-item:hover .platform-icon,
 body.light-mode .platform-item:hover .platform-name{
   color:var(--platform-color);
   text-shadow:none;
-}
-
-body.light-mode .platform-item.github:hover .platform-icon,
-body.light-mode .platform-item.github:hover .platform-name,
-body.light-mode .platform-item.twitter:hover .platform-icon,
-body.light-mode .platform-item.twitter:hover .platform-name{
-  color:#111111 !important;
-  text-shadow:none;
-}
-
-body.light-mode .platform-item.github:hover,
-body.light-mode .platform-item.twitter:hover{
-  border-color:#111111 !important;
-  box-shadow:
-    0 12px 28px rgba(0,0,0,0.10),
-    0 0 0 1px rgba(17,17,17,0.14),
-    0 0 18px rgba(17,17,17,0.08);
 }
