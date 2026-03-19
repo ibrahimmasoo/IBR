@@ -1080,7 +1080,7 @@ body.light-mode .talk-btn{
 }
 
 /* =========================
-   GALLERY SECTION
+   GALLERY SECTION - OLD
 ========================= */
 
 .gallery-section{
@@ -1132,10 +1132,10 @@ body.light-mode .gallery-line{
   background:#111;
 }
 
-/* ✅ تم التعديل هنا عشان المربعات تبقى على قد الصور */
 .gallery-grid{
-  column-count:3;
-  column-gap:24px;
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:24px;
 }
 
 .gallery-item{
@@ -1143,12 +1143,7 @@ body.light-mode .gallery-line{
   overflow:hidden;
   border-radius:24px;
   background:rgba(17,17,17,.92);
-  display:inline-block;
-  width:100%;
-  margin-bottom:24px;
-  break-inside:avoid;
-  -webkit-column-break-inside:avoid;
-  page-break-inside:avoid;
+  min-height:260px;
   box-shadow:0 12px 28px rgba(0,0,0,.18);
 }
 
@@ -1159,25 +1154,30 @@ body.light-mode .gallery-item{
 
 .gallery-item img{
   width:100%;
-  height:auto;
-  display:block;
+  height:100%;
   object-fit:cover;
-}
-
-.gallery-item:hover{
-  transform:translateY(-6px);
-  box-shadow:0 22px 50px rgba(0,0,0,.28);
+  display:block;
+  transition:transform .5s ease;
 }
 
 .gallery-item:hover img{
-  transform:scale(1.03);
+  transform:scale(1.06);
 }
 
-/* إلغاء تأثيرات grid القديمة */
-.gallery-item.tall,
+.gallery-item.tall{
+  grid-column:span 4;
+  grid-row:span 2;
+  min-height:640px;
+}
+
 .gallery-item.wide{
-  grid-column:auto;
-  grid-row:auto;
+  grid-column:span 8;
+  min-height:330px;
+}
+
+.gallery-item:not(.tall):not(.wide){
+  grid-column:span 4;
+  min-height:300px;
 }
 
 @media (max-width:1100px){
@@ -1205,12 +1205,15 @@ body.light-mode .gallery-item{
 
 @media (max-width:992px){
   .gallery-grid{
-    column-count:2;
-    column-gap:20px;
+    grid-template-columns:repeat(2, 1fr);
   }
 
-  .gallery-item{
-    margin-bottom:20px;
+  .gallery-item,
+  .gallery-item.tall,
+  .gallery-item.wide{
+    grid-column:span 1;
+    grid-row:span 1;
+    min-height:260px;
   }
 }
 
@@ -1329,12 +1332,14 @@ body.light-mode .gallery-item{
   }
 
   .gallery-grid{
-    column-count:1;
-    column-gap:0;
+    grid-template-columns:1fr;
+    gap:16px;
   }
 
-  .gallery-item{
-    margin-bottom:16px;
+  .gallery-item,
+  .gallery-item.tall,
+  .gallery-item.wide{
+    min-height:240px;
   }
 
   .gallery-header p{
@@ -1856,7 +1861,6 @@ body.light-mode .platform-item:hover .platform-name{
   cursor:pointer;
 }
 
-/* 📱 موبايل */
 @media (max-width:768px){
 
   .navbar{
@@ -1923,7 +1927,7 @@ body.light-mode .platform-item:hover .platform-name{
   }
 
   .gallery-grid{
-    column-count:1;
+    grid-template-columns:1fr;
     gap:16px;
   }
 
