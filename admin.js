@@ -14,7 +14,7 @@ const siteContentKeys = [
   "contact_button_text"
 ];
 
-window.currentSession = null;
+window.currentSession = { user: { email: "public-admin" } };
 window.projectsCache = [];
 window.galleryCache = [];
 window.linksCache = [];
@@ -32,19 +32,14 @@ function showToast(message) {
 
 function normalizeError(error) {
   const msg = String(error?.message || error || "Unknown error");
-  if (msg.includes("Invalid login credentials")) return "البريد أو كلمة السر غير صحيحة.";
-  if (msg.includes("relation") || msg.includes("does not exist")) return "جداول Supabase غير موجودة. شغّل ملف SQL الأول داخل SQL Editor.";
-  if (msg.includes("row-level security") || msg.includes("permission denied")) return "ليس لديك صلاحية. لازم تسجّل دخول بحساب موجود في Authentication.";
+  if (msg.includes("relation") || msg.includes("does not exist")) return "جداول Supabase غير موجودة. شغّل ملف SQL داخل SQL Editor.";
+  if (msg.includes("row-level security") || msg.includes("permission denied")) return "صلاحيات Supabase تمنع التعديل. لازم تفتح Policies للعامة.";
   if (msg.includes("Failed to fetch")) return "فشل الاتصال بـ Supabase. راجع Project URL و Publishable Key.";
-  if (msg.includes("storage") && msg.includes("bucket")) return "Bucket الصور غير موجود. شغّل ملف SQL مرة واحدة ليتم إنشاؤه.";
+  if (msg.includes("storage") && msg.includes("bucket")) return "Bucket الصور غير موجود. لازم يتعمل site-media في Supabase Storage.";
   return msg;
 }
 
-function ensureAuth(actionName) {
-  if (!window.currentSession) {
-    showToast(`لازم تسجل دخول الأول قبل ${actionName}.`);
-    return false;
-  }
+function ensureAuth() {
   return true;
 }
 
@@ -72,44 +67,30 @@ function fillForm(form, values) {
   });
 }
 
-async function login(email, password) {
-  const { error } = await db.auth.signInWithPassword({ email, password });
-  if (error) throw error;
-}
-
-async function logout() {
-  const { error } = await db.auth.signOut();
-  if (error) throw error;
-}
-
-function toggleManagerState(isLoggedIn) {
+function setupPublicManagerState() {
   document.querySelectorAll(".panel-form select, .panel-form input, .panel-form textarea, .panel-form button").forEach((el) => {
-    if (el.closest("#loginForm")) return;
-    el.disabled = !isLoggedIn;
+    el.disabled = false;
   });
-
-  const lockText = document.getElementById("loginHint");
-  if (lockText) {
-    lockText.textContent = isLoggedIn
-      ? "تم تسجيل الدخول. تقدر الآن تضيف وتعدل وتمسح البيانات."
-      : "التعديل مقفول لحد ما تسجل دخول بحساب من Supabase Authentication.";
-  }
-}
-
-async function loadSession() {
-  const { data, error } = await db.auth.getSession();
-  if (error) throw error;
-
-  window.currentSession = data.session || null;
 
   const sessionInfo = document.getElementById("sessionInfo");
   if (sessionInfo) {
-    sessionInfo.innerHTML = window.currentSession
-      ? `<strong>Logged in:</strong> ${escapeHtml(window.currentSession.user.email)}`
-      : `<strong>Status:</strong> Not logged in`;
+    sessionInfo.innerHTML = `<strong>Mode:</strong> Public Admin Enabled`;
   }
 
-  toggleManagerState(!!window.currentSession);
+  const lockText = document.getElementById("loginHint");
+  if (lockText) {
+    lockText.textContent = "التعديل مفتوح مباشرة بدون تسجيل دخول.";
+  }
+
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.style.display = "none";
+  }
+
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.style.display = "none";
+  }
 }
 
 async function loadOverview() {
@@ -174,7 +155,7 @@ async function loadSiteContent() {
 
 async function saveSiteContent(event) {
   event.preventDefault();
-  if (!ensureAuth("حفظ النصوص")) return;
+  if (!ensureAuth()) return;
 
   const formData = new FormData(event.target);
   const payload = siteContentKeys.map((key) => ({
@@ -235,7 +216,7 @@ async function loadProjects() {
 
 async function saveProject(event) {
   event.preventDefault();
-  if (!ensureAuth("حفظ المشروع")) return;
+  if (!ensureAuth()) return;
 
   const form = event.target;
   const formData = new FormData(form);
@@ -273,7 +254,7 @@ async function saveProject(event) {
 async function handleProjectsTableClick(event) {
   const button = event.target.closest("button[data-action]");
   if (!button) return;
-  if (!ensureAuth("إدارة المشاريع")) return;
+  if (!ensureAuth()) return;
 
   const item = window.projectsCache.find((project) => String(project.id) === String(button.dataset.id));
   if (!item) return;
@@ -336,7 +317,7 @@ async function loadGallery() {
 
 async function saveGallery(event) {
   event.preventDefault();
-  if (!ensureAuth("حفظ الصورة")) return;
+  if (!ensureAuth()) return;
 
   const form = event.target;
   const formData = new FormData(form);
@@ -377,7 +358,7 @@ async function saveGallery(event) {
 async function handleGalleryTableClick(event) {
   const button = event.target.closest("button[data-action]");
   if (!button) return;
-  if (!ensureAuth("إدارة الصور")) return;
+  if (!ensureAuth()) return;
 
   const item = window.galleryCache.find((image) => String(image.id) === String(button.dataset.id));
   if (!item) return;
@@ -423,7 +404,7 @@ async function loadLinks() {
 
 async function saveLink(event) {
   event.preventDefault();
-  if (!ensureAuth("حفظ اللينك")) return;
+  if (!ensureAuth()) return;
 
   const form = event.target;
   const formData = new FormData(form);
@@ -457,7 +438,7 @@ async function saveLink(event) {
 async function handleLinksTableClick(event) {
   const button = event.target.closest("button[data-action]");
   if (!button) return;
-  if (!ensureAuth("إدارة اللينكات")) return;
+  if (!ensureAuth()) return;
 
   const item = window.linksCache.find((link) => String(link.id) === String(button.dataset.id));
   if (!item) return;
@@ -514,7 +495,8 @@ async function loadAnalytics() {
 }
 
 async function initializeDashboard() {
-  await loadSession();
+  setupPublicManagerState();
+
   await Promise.all([
     loadOverview(),
     loadSiteContent(),
@@ -533,8 +515,6 @@ function setupTheme() {
 }
 
 function registerEvents() {
-  const loginForm = document.getElementById("loginForm");
-  const logoutBtn = document.getElementById("logoutBtn");
   const contentForm = document.getElementById("contentForm");
   const projectForm = document.getElementById("projectForm");
   const galleryForm = document.getElementById("galleryForm");
@@ -546,31 +526,14 @@ function registerEvents() {
   const resetGalleryForm = document.getElementById("resetGalleryForm");
   const resetLinkForm = document.getElementById("resetLinkForm");
 
+  const loginForm = document.getElementById("loginForm");
   if (loginForm) {
-    loginForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      try {
-        const email = document.getElementById("loginEmail")?.value || "";
-        const password = document.getElementById("loginPassword")?.value || "";
-        await login(email, password);
-        await initializeDashboard();
-        showToast("تم تسجيل الدخول بنجاح.");
-      } catch (error) {
-        showToast(normalizeError(error));
-      }
-    });
+    loginForm.style.display = "none";
   }
 
+  const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
-      try {
-        await logout();
-        await loadSession();
-        showToast("تم تسجيل الخروج.");
-      } catch (error) {
-        showToast(normalizeError(error));
-      }
-    });
+    logoutBtn.style.display = "none";
   }
 
   if (contentForm) {
@@ -671,14 +634,6 @@ function registerEvents() {
       form.elements.namedItem("id").value = "";
     });
   }
-
-  db.auth.onAuthStateChange(async () => {
-    try {
-      await loadSession();
-    } catch (error) {
-      showToast(normalizeError(error));
-    }
-  });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
