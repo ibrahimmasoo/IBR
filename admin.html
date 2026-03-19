@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBR Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050505;
+      --card:#111111;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --border:rgba(255,255,255,.12);
+      --btn-bg:#ffffff;
+      --btn-text:#000000;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,sans-serif}
+    body{
+      min-height:100vh;
+      color:var(--text);
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.22) 1.1px, transparent 1.2px);
+      background-size:52px 52px,52px 52px,52px 52px;
+      background-position:0 0,0 0,26px 26px;
+      background-attachment:fixed;
+      padding:32px 20px;
+    }
+    .wrap{max-width:1180px;margin:0 auto}
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:18px 24px;border:1px solid var(--border);border-radius:24px;
+      background:rgba(10,10,10,.78);backdrop-filter:blur(10px);margin-bottom:28px;
+    }
+    .logo{font-size:32px;font-weight:800;letter-spacing:.04em}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      text-decoration:none;padding:12px 18px;border-radius:14px;border:1px solid var(--border);
+      color:var(--text);display:inline-flex;align-items:center;justify-content:center
+    }
+    .btn.primary{background:var(--btn-bg);color:var(--btn-text);border-color:transparent;font-weight:700}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch}
+    .panel,.card{border:1px solid var(--border);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border-radius:28px}
+    .panel{padding:34px}
+    .eyebrow{font-size:14px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    h1{font-size:clamp(42px,7vw,86px);line-height:.95;margin-bottom:14px}
+    .lead{font-size:20px;color:var(--muted);max-width:720px;margin-bottom:30px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+    .card{padding:24px;min-height:148px;display:flex;flex-direction:column;justify-content:space-between}
+    .card h3{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+    .num{font-size:46px;font-weight:800}
+    .list{margin-top:22px;display:grid;gap:14px}
+    .list-item{padding:16px 18px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.03)}
+    .list-item strong{display:block;margin-bottom:4px}
+    .small{color:var(--muted);font-size:14px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.topbar{padding:16px}.panel{padding:24px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="logo">IBR</div>
+      <div class="actions">
+        <a class="btn" href="index.html">Back to Site</a>
+        <a class="btn primary" href="mailto:you@example.com?subject=Dashboard%20Setup">Connect Backend Later</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="panel">
+        <div class="eyebrow">Dashboard</div>
+        <h1>Site Control Panel</h1>
+        <p class="lead">This page has been added without touching your original homepage content. Your main site stays static exactly as before, and this dashboard page is isolated until you decide to connect backend management later.</p>
+        <div class="grid">
+          <div class="card"><h3>Projects</h3><div class="num">6</div><div class="small">Matches the current static homepage cards.</div></div>
+          <div class="card"><h3>Gallery</h3><div class="num">2</div><div class="small">Current uploaded gallery images inside the project.</div></div>
+          <div class="card"><h3>Status</h3><div class="num">OK</div><div class="small">Homepage restored and separated from dashboard.</div></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">Notes</div>
+        <div class="list">
+          <div class="list-item"><strong>Homepage restored</strong><span class="small">No more Supabase loading screen on the main page.</span></div>
+          <div class="list-item"><strong>Dashboard isolated</strong><span class="small">Only this file is new, so it will not break index.html.</span></div>
+          <div class="list-item"><strong>Next safe step</strong><span class="small">Later we can connect admin login and database step by step without touching the public site first.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

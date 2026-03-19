@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibrahim Masood Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="#home" class="logo" id="logoLink">IBR</a>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#platforms">Platforms</a></li>
+      <li><a href="#support">Support</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="admin.html">Dashboard</a></li>
+    </ul>
+
+    <div class="top-controls">
+      <div class="lang-switcher">
+        <button type="button">EN</button>
+        <button type="button">AR</button>
+        <button type="button">TR</button>
+      </div>
+
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-name" id="heroName">
+        <span>I</span>
+        <span>B</span>
+        <span>R</span>
+        <span>A</span>
+        <span>H</span>
+        <span>I</span>
+        <span>M</span>
+        <span class="space">&nbsp;</span>
+        <span>M</span>
+        <span>A</span>
+        <span>S</span>
+        <span>O</span>
+        <span>O</span>
+        <span>D</span>
+      </h1>
+
+      <h2 class="typing-text">
+        <span id="typing"></span>
+      </h2>
+
+      <p>Exploring my world, my profile, projects, and more</p>
+
+      <a href="#about" class="btn">Explore</a>
+    </div>
+  </section>
+
+  <section id="about" class="section about-section">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="about-title">About Me</h2>
+
+        <p class="about-subtitle">
+          A journey shaped by engineering, creativity, and a passion for meaningful innovation.
+        </p>
+
+        <div class="about-line"></div>
+
+        <p>
+          My name is Ibrahim Ashraf Ibrahim Masood, aka IBR. I was born on December 28, 2001, in Saudi Arabia, but I am Egyptian, born to Egyptian parents.
+        </p>
+
+        <p>
+          I am currently studying Computer Engineering at Bartın University in Turkey. I have completed several projects, which you can find in the "My Projects" section below on this page.
+        </p>
+
+        <p>
+          I love the color black and I love art in all its forms. As a child, my favorite hobby was drawing.
+        </p>
+
+        <p>
+          If you would like to learn more about me, you can follow me on my social media platforms.
+        </p>
+
+        <a href="#contact" class="btn about-btn">Get in touch</a>
+      </div>
+
+      <div class="about-image-wrap">
+        <div class="about-image-frame"></div>
+        <img src="me.jpeg" alt="Ibrahim Masood" class="about-image">
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section section">
+    <div class="projects-header-row">
+      <div class="projects-header">
+        <h2>My Projects</h2>
+        <p>
+          Explore the projects I've built in technology and software.
+        </p>
+        <div class="projects-line"></div>
+      </div>
+
+      <a href="projects.html" class="view-more-link">
+        <span>View More</span>
+        <i class="ri-arrow-right-line"></i>
+      </a>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Autonomous Drone Controller">
+        <div class="project-content">
+          <div class="project-icon">⚙</div>
+          <h3>Autonomous Drone Controller</h3>
+          <p>A custom flight controller built with ESP32 featuring PID stabilization.</p>
+          <div class="project-tags">
+            <span>C++</span>
+            <span>ESP32</span>
+            <span>Embedded</span>
+          </div>
+          <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="FPGA Image Processor">
+        <div class="project-content">
+          <div class="project-icon">▣</div>
+          <h3>FPGA Image Processor</h3>
+          <p>Hardware accelerated image filtering implemented in Verilog.</p>
+          <div class="project-tags">
+            <span>Verilog</span>
+            <span>FPGA</span>
+            <span>Hardware</span>
+          </div>
+          <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1581091870627-3c0c3e9c9b2b?auto=format&fit=crop&w=1200&q=80" alt="Smart Home System">
+        <div class="project-content">
+          <div class="project-icon">💡</div>
+          <h3>Smart Home System</h3>
+          <p>IoT-based smart home automation system using sensors and ESP32.</p>
+          <div class="project-tags">
+            <span>IoT</span>
+            <span>ESP32</span>
+            <span>Automation</span>
+          </div>
+          <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Portfolio Website">
+        <div class="project-content">
+          <div class="project-icon">🌐</div>
+          <h3>Portfolio Website</h3>
+          <p>A personal responsive portfolio website built with HTML, CSS, and JavaScript.</p>
+          <div class="project-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80" alt="Embedded Monitoring System">
+        <div class="project-content">
+          <div class="project-icon">🖧</div>
+          <h3>Embedded Monitoring System</h3>
+          <p>A real-time monitoring solution for sensors and devices using microcontrollers.</p>
+          <div class="project-tags">
+            <span>Embedded</span>
+            <span>Sensors</span>
+            <span>C</span>
+          </div>
+          <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80" alt="Digital Logic Simulator">
+        <div class="project-content">
+          <div class="project-icon">🔌</div>
+          <h3>Digital Logic Simulator</h3>
+          <p>A project for simulating digital logic circuits and testing hardware behavior.</p>
+          <div class="project-tags">
+            <span>Logic Design</span>
+            <span>Simulation</span>
+            <span>Engineering</span>
+          </div>
+          <a href="#" class="project-btn">VIEW PROJECT</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<section class="gallery-section section" id="gallery">
+  <div class="gallery-header-row">
+    <div class="gallery-header">
+      <h2>Gallery</h2>
+      <p>Explore a selection of visuals, moments, and creative shots from my work and journey.</p>
+      <span class="gallery-line"></span>
+    </div>
+
+    <a href="gallery.html" class="view-more-link">
+      View More <i class="ri-arrow-right-line"></i>
+    </a>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item tall">
+      <img src="images/gallery1.jpg" alt="Gallery Image 1">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/gallery2.jpg" alt="Gallery Image 2">
+    </div>
+
+    <div class="gallery-item wide">
+      <img src="images/gallery3.jpg" alt="Gallery Image 3">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/gallery4.jpg" alt="Gallery Image 4">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/gallery5.jpg" alt="Gallery Image 5">
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/gallery6.jpg" alt="Gallery Image 6">
+    </div>
+  </div>
+</section>
+  
+  <section id="platforms" class="platforms section">
+    <div class="platforms-header">
+      <h2>My Platforms</h2>
+      <p>Connect with me across various digital spaces and social media.</p>
+      <div class="platforms-line"></div>
+    </div>
+
+    <div class="platforms-grid">
+
+      <a href="https://www.instagram.com/ibrahimasooo/" target="_blank" class="platform-item instagram">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-instagram-line"></i></span>
+          <span class="platform-name">Instagram</span>
+        </div>
+      </a>
+
+      <a href="https://www.facebook.com/ibrahim.masoud.5686/" target="_blank" class="platform-item facebook">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-facebook-circle-line"></i></span>
+          <span class="platform-name">Facebook</span>
+        </div>
+      </a>
+
+      <a href="https://www.tiktok.com/@ibrahimmasood201" target="_blank" class="platform-item tiktok">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-tiktok-line"></i></span>
+          <span class="platform-name">TikTok</span>
+        </div>
+      </a>
+
+      <a href="https://x.com/Gadamadafada" target="_blank" class="platform-item twitter">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-twitter-x-line"></i></span>
+          <span class="platform-name">X</span>
+        </div>
+      </a>
+
+      <a href="https://youtube.com/@ibrahimmasood29?si=sDG70g6_lIs7Lnxn" target="_blank" class="platform-item youtube">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-youtube-line"></i></span>
+          <span class="platform-name">YouTube</span>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/ibrahim-masood-2b14b2256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="platform-item linkedin">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-linkedin-box-line"></i></span>
+          <span class="platform-name">LinkedIn</span>
+        </div>
+      </a>
+
+      <a href="https://linktr.ee/IBR.201?utm_source=linktree_profile_share&ltsid=7fb4e0c1-9398-4ce5-9638-5ffcdda308f7" target="_blank" class="platform-item linktree">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-links-line"></i></span>
+          <span class="platform-name">Linktree</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/ibrahimmasoo" target="_blank" class="platform-item github">
+        <div class="platform-inner">
+          <span class="platform-icon"><i class="ri-github-line"></i></span>
+          <span class="platform-name">GitHub</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="contact" class="talk-section">
+    <div class="talk-wrapper">
+      <div class="talk-left">
+        <p class="talk-label">CONTACT</p>
+        <h2 class="talk-title">LET'S TALK</h2>
+        <p class="talk-text">
+          I'm always open to new opportunities, collaborations, or simply a friendly conversation.
+        </p>
+
+        <div class="talk-links">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ibrahimmasoud201@gmail.com" class="talk-item" target="_blank">
+            <div class="talk-icon">✉</div>
+            <span>EMAIL</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/ibrahim-masood-2b14b2256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="talk-item">
+            <div class="talk-icon">in</div>
+            <span>LINKEDIN</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="talk-right">
+        <form class="talk-form">
+          <label for="talkName">NAME</label>
+          <input id="talkName" type="text" placeholder="Your Name">
+
+          <label for="talkEmail">EMAIL</label>
+          <input id="talkEmail" type="email" placeholder="Your Email">
+
+          <label for="talkMessage">MESSAGE</label>
+          <textarea id="talkMessage" placeholder="Your Message"></textarea>
+
+          <button type="submit" class="talk-btn">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="support" class="section dark">
+    <div class="projects-header">
+      <h2>Support Me</h2>
+      <p>
+        If you like my projects, please consider supporting my future work and creations.
+      </p>
+      <div class="projects-line"></div>
+    </div>
+
+    <div class="grid">
+      <div class="card center">
+        <div style="font-size:40px; margin-bottom:15px;">☕</div>
+        <h3>Buy Me a Coffee</h3>
+        <a href="https://paypal.me/IbrahimMasoodSA" target="_blank">
+          <button type="button" class="btn">Donate</button>
+        </a>
+      </div>
+
+      <div class="card center">
+        <div style="font-size:40px; margin-bottom:15px;">💳</div>
+        <h3>PayPal</h3>
+        <a href="https://paypal.me/IbrahimMasoodSA" target="_blank">
+          <button type="button" class="btn">Donate</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Ibrahim Masood
+  </footer>
+
+  <div class="chatbot">
+    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat assistant">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+      </svg>
+    </button>
+
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="chatbot-header">
+        <div>
+          <h3>IBR AI Assistant</h3>
+          <p>Ask me anything about Ibrahim</p>
+        </div>
+        <button class="chatbot-close" id="chatbotClose" type="button">✕</button>
+      </div>
+
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="bot-message">
+          Hi! Ask me anything about Ibrahim.
+        </div>
+      </div>
+
+      <form class="chatbot-input-area" id="chatbotForm">
+        <input id="chatbotInput" type="text" placeholder="Ask about Ibrahim..." autocomplete="off">
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      themeToggle.textContent = document.body.classList.contains("light-mode") ? "☾" : "☀";
+    });
+
+    const logoLink = document.getElementById("logoLink");
+    logoLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector("#home").scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show-section");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".section, .card, .project-card, .talk-section, .gallery-item, .platform-item").forEach(el => {
+      observer.observe(el);
+    });
+
+    const chatbotToggle = document.getElementById("chatbotToggle");
+    const chatbotClose = document.getElementById("chatbotClose");
+    const chatbotBox = document.getElementById("chatbotBox");
+    const chatbotForm = document.getElementById("chatbotForm");
+    const chatbotInput = document.getElementById("chatbotInput");
+    const chatbotMessages = document.getElementById("chatbotMessages");
+
+    chatbotToggle.addEventListener("click", () => {
+      chatbotBox.classList.toggle("open");
+    });
+
+    chatbotClose.addEventListener("click", () => {
+      chatbotBox.classList.remove("open");
+    });
+
+    chatbotForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const rawMsg = chatbotInput.value.trim();
+      const msg = rawMsg.toLowerCase();
+
+      if (!rawMsg) return;
+
+      addMessage(rawMsg, "user");
+      chatbotInput.value = "";
+
+      let reply = "Ask me about Ibrahim's projects, skills, background, or contact information.";
+
+      if (msg.includes("who") || msg.includes("about")) {
+        reply = "Ibrahim Ashraf Ibrahim Masoud, also known as IBR, is an Egyptian Computer Engineering student at Bartın University in Turkey.";
+      } else if (msg.includes("skills")) {
+        reply = "His skills include FPGA, Verilog, Embedded Systems, ESP32, and hardware/software engineering.";
+      } else if (msg.includes("project")) {
+        reply = "You can explore Ibrahim's completed work in the My Projects section on this website.";
+      } else if (msg.includes("gallery")) {
+        reply = "The gallery section highlights visual snapshots from Ibrahim's engineering journey and creative work.";
+      } else if (msg.includes("contact") || msg.includes("email")) {
+        reply = "You can contact Ibrahim through the contact form on this website or through his social media platforms.";
+      } else if (msg.includes("study") || msg.includes("education") || msg.includes("student")) {
+        reply = "Ibrahim is currently studying Computer Engineering at Bartın University in Turkey.";
+      } else if (msg.includes("art") || msg.includes("draw") || msg.includes("drawing")) {
+        reply = "Ibrahim loves art in all its forms, and drawing was his favorite hobby as a child.";
+      } else if (msg.includes("color") || msg.includes("black")) {
+        reply = "His favorite color is black.";
+      }
+
+      setTimeout(() => addMessage(reply, "bot"), 300);
+    });
+
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = sender === "user" ? "user-message" : "bot-message";
+      div.textContent = text;
+      chatbotMessages.appendChild(div);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    const heroLetters = document.querySelectorAll("#heroName span");
+
+    heroLetters.forEach(letter => {
+      if (!letter.classList.contains("space")) {
+        letter.addEventListener("click", () => {
+          letter.classList.remove("shake");
+          void letter.offsetWidth;
+          letter.classList.add("shake");
+        });
+      }
+    });
+
+    const text = "Welcome Home";
+    const typingElement = document.getElementById("typing");
+    let i = 0;
+
+    function typeEffect() {
+      if (i < text.length) {
+        typingElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 80);
+      }
+    }
+
+    typeEffect();
+  </script>
+</body>
+</html>
