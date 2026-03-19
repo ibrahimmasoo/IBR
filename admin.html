@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Ibrahim Masood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar glass">
+      <div>
+        <div class="dashboard-brand">
+          <span>IBR</span>
+          <small>Admin Panel</small>
+        </div>
+        <nav class="dashboard-nav">
+          <a href="#overview">Overview</a>
+          <a href="#content">Content</a>
+          <a href="#projects-manager">Projects</a>
+          <a href="#gallery-manager">Gallery</a>
+          <a href="#links-manager">Links</a>
+          <a href="#analytics">Analytics</a>
+        </nav>
+      </div>
+      <div class="sidebar-actions">
+        <a href="index.html" class="btn btn-secondary">Open Website</a>
+        <button class="btn" id="logoutBtn" type="button">Logout</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <section class="dashboard-top glass">
+        <div>
+          <span class="eyebrow">SUPABASE CONNECTED</span>
+          <h1>Website Control Dashboard</h1>
+          <p>Edit texts, projects, links, images, and review complete analytics from one place.</p>
+        </div>
+        <div class="auth-box" id="authBox">
+          <form id="loginForm" class="compact-form">
+            <input type="email" id="loginEmail" placeholder="Admin email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button class="btn" type="submit">Login</button>
+          </form>
+          <p class="tiny-note">Create your first user from Supabase Authentication, then log in here.</p>
+          <div id="sessionInfo" class="session-info"></div>
+        </div>
+      </section>
+
+      <section id="overview" class="section dashboard-section">
+        <div class="section-head">
+          <span class="eyebrow">OVERVIEW</span>
+          <h2>Quick Stats</h2>
+        </div>
+        <div class="dashboard-stats" id="dashboardStats"></div>
+      </section>
+
+      <section id="content" class="section dashboard-section">
+        <div class="section-head">
+          <span class="eyebrow">CONTENT</span>
+          <h2>Editable Website Texts</h2>
+        </div>
+        <form id="contentForm" class="panel-form glass">
+          <div class="form-grid two-col">
+            <label>
+              Hero Title
+              <input type="text" name="hero_title" required>
+            </label>
+            <label>
+              Hero Subtitle
+              <input type="text" name="hero_subtitle">
+            </label>
+          </div>
+          <label>
+            Hero Description
+            <textarea name="hero_description" rows="3"></textarea>
+          </label>
+          <label>
+            About Heading
+            <input type="text" name="about_heading">
+          </label>
+          <label>
+            About Body
+            <textarea name="about_body" rows="5"></textarea>
+          </label>
+          <div class="form-grid two-col">
+            <label>
+              Contact Title
+              <input type="text" name="contact_title">
+            </label>
+            <label>
+              Contact Button Text
+              <input type="text" name="contact_button_text">
+            </label>
+          </div>
+          <div class="form-grid two-col">
+            <label>
+              Contact Email
+              <input type="email" name="contact_email">
+            </label>
+            <label>
+              Contact Description
+              <input type="text" name="contact_description">
+            </label>
+          </div>
+          <button class="btn" type="submit">Save Text Content</button>
+        </form>
+      </section>
+
+      <section id="projects-manager" class="section dashboard-section">
+        <div class="section-head inline-head">
+          <div>
+            <span class="eyebrow">PROJECTS</span>
+            <h2>Manage Projects</h2>
+          </div>
+        </div>
+        <form id="projectForm" class="panel-form glass">
+          <input type="hidden" name="id">
+          <div class="form-grid two-col">
+            <label>Project Title<input type="text" name="title" required></label>
+            <label>Project Link<input type="url" name="project_url"></label>
+          </div>
+          <div class="form-grid two-col">
+            <label>Image URL<input type="url" name="image_url"></label>
+            <label>Icon / Emoji<input type="text" name="icon" maxlength="6"></label>
+          </div>
+          <label>Description<textarea name="description" rows="4"></textarea></label>
+          <label>Tags (comma separated)<input type="text" name="tags"></label>
+          <div class="form-grid three-col">
+            <label>Display Order<input type="number" name="display_order" min="0" value="0"></label>
+            <label>Featured
+              <select name="is_featured"><option value="true">Yes</option><option value="false">No</option></select>
+            </label>
+            <label>Visible
+              <select name="is_visible"><option value="true">Yes</option><option value="false">No</option></select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="btn" type="submit">Save Project</button>
+            <button class="btn btn-secondary" id="resetProjectForm" type="button">Clear</button>
+          </div>
+        </form>
+        <div class="table-wrap glass"><div id="projectsTable"></div></div>
+      </section>
+
+      <section id="gallery-manager" class="section dashboard-section">
+        <div class="section-head">
+          <span class="eyebrow">GALLERY</span>
+          <h2>Manage Images</h2>
+        </div>
+        <form id="galleryForm" class="panel-form glass">
+          <input type="hidden" name="id">
+          <div class="form-grid two-col">
+            <label>Image Title<input type="text" name="title" required></label>
+            <label>Image URL<input type="url" name="image_url"></label>
+          </div>
+          <div class="form-grid two-col">
+            <label>Upload File<input type="file" id="galleryFile" accept="image/*"></label>
+            <label>Alt Text<input type="text" name="alt_text"></label>
+          </div>
+          <div class="form-grid three-col">
+            <label>Display Order<input type="number" name="display_order" min="0" value="0"></label>
+            <label>Visible
+              <select name="is_visible"><option value="true">Yes</option><option value="false">No</option></select>
+            </label>
+            <label>Layout Style
+              <select name="layout_type"><option value="normal">Normal</option><option value="wide">Wide</option><option value="tall">Tall</option></select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="btn" type="submit">Save Image</button>
+            <button class="btn btn-secondary" id="resetGalleryForm" type="button">Clear</button>
+          </div>
+        </form>
+        <div class="table-wrap glass"><div id="galleryTable"></div></div>
+      </section>
+
+      <section id="links-manager" class="section dashboard-section">
+        <div class="section-head">
+          <span class="eyebrow">LINKS</span>
+          <h2>Manage Links</h2>
+        </div>
+        <form id="linkForm" class="panel-form glass">
+          <input type="hidden" name="id">
+          <div class="form-grid two-col">
+            <label>Label<input type="text" name="label" required></label>
+            <label>URL<input type="url" name="url" required></label>
+          </div>
+          <div class="form-grid three-col">
+            <label>Platform<input type="text" name="platform"></label>
+            <label>Icon Class<input type="text" name="icon_class" placeholder="ri-github-fill"></label>
+            <label>Display Order<input type="number" name="display_order" min="0" value="0"></label>
+          </div>
+          <label>Description<textarea name="description" rows="3"></textarea></label>
+          <div class="form-grid two-col">
+            <label>Visible
+              <select name="is_visible"><option value="true">Yes</option><option value="false">No</option></select>
+            </label>
+            <label>Open in new tab
+              <select name="open_in_new_tab"><option value="true">Yes</option><option value="false">No</option></select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="btn" type="submit">Save Link</button>
+            <button class="btn btn-secondary" id="resetLinkForm" type="button">Clear</button>
+          </div>
+        </form>
+        <div class="table-wrap glass"><div id="linksTable"></div></div>
+      </section>
+
+      <section id="analytics" class="section dashboard-section">
+        <div class="section-head">
+          <span class="eyebrow">ANALYTICS</span>
+          <h2>Website Analytics</h2>
+        </div>
+        <div class="analytics-grid">
+          <div class="glass analytics-card">
+            <h3>Top Pages</h3>
+            <div id="topPages"></div>
+          </div>
+          <div class="glass analytics-card">
+            <h3>Recent Visits</h3>
+            <div id="recentVisits"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

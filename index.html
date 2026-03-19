@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibrahim Masood Portfolio</title>
+  <meta name="description" content="Official portfolio website of Ibrahim Masood.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#home" class="logo">IBR</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#links">Links</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="admin.html" class="admin-link">Dashboard</a></li>
+    </ul>
+
+    <div class="top-controls">
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">LIVE CONTENT FROM SUPABASE</span>
+          <h1 id="heroTitle">Loading...</h1>
+          <h2 id="heroSubtitle">Please wait</h2>
+          <p id="heroDescription">Your content is being loaded from the backend.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="admin.html" class="btn btn-secondary">Open Dashboard</a>
+          </div>
+        </div>
+
+        <div class="hero-card glass">
+          <div class="stat-row">
+            <div>
+              <span class="stat-label">Projects</span>
+              <strong id="heroProjectsCount">0</strong>
+            </div>
+            <i class="ri-stack-line"></i>
+          </div>
+          <div class="stat-row">
+            <div>
+              <span class="stat-label">Gallery</span>
+              <strong id="heroGalleryCount">0</strong>
+            </div>
+            <i class="ri-image-line"></i>
+          </div>
+          <div class="stat-row">
+            <div>
+              <span class="stat-label">Links</span>
+              <strong id="heroLinksCount">0</strong>
+            </div>
+            <i class="ri-links-line"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-head">
+        <span class="eyebrow">ABOUT</span>
+        <h2>About Me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="glass about-card">
+          <h3 id="aboutHeading">Loading...</h3>
+          <p id="aboutBody">Loading content...</p>
+        </div>
+        <div class="glass about-card">
+          <h3>What this website can do now</h3>
+          <ul class="feature-list">
+            <li>Edit all public texts from the dashboard</li>
+            <li>Add, update, hide, or delete projects</li>
+            <li>Upload or remove gallery images</li>
+            <li>Manage social links and external links</li>
+            <li>Review analytics and latest visitor activity</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-head inline-head">
+        <div>
+          <span class="eyebrow">PROJECTS</span>
+          <h2>Featured Projects</h2>
+        </div>
+        <a href="projects.html" class="text-link">View all <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="cards-grid" id="featuredProjects"></div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="section-head inline-head">
+        <div>
+          <span class="eyebrow">GALLERY</span>
+          <h2>Latest Gallery</h2>
+        </div>
+        <a href="gallery.html" class="text-link">View all <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <section id="links" class="section">
+      <div class="section-head">
+        <span class="eyebrow">LINKS</span>
+        <h2>Platforms & Social Links</h2>
+      </div>
+      <div class="links-grid" id="linksGrid"></div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="glass contact-card">
+        <span class="eyebrow">CONTACT</span>
+        <h2 id="contactTitle">Let’s build something useful.</h2>
+        <p id="contactDescription">You can manage this text from the dashboard as well.</p>
+        <a id="contactButton" class="btn" href="mailto:hello@example.com">Send Email</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
