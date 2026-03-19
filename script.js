@@ -117,6 +117,19 @@ function toggleTheme() {
   }
 }
 
+function toggleMobileMenu() {
+  const navLinks = document.querySelector(".nav-links");
+  const menuToggle = document.querySelector(".menu-toggle");
+
+  if (!navLinks || !menuToggle) return;
+
+  navLinks.classList.toggle("active");
+  menuToggle.classList.toggle("active");
+
+  const expanded = navLinks.classList.contains("active");
+  menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("site-theme");
   const savedLang = localStorage.getItem("site-language") || "en";
@@ -139,6 +152,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setLanguage(savedLang);
 
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", toggleMobileMenu);
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        navLinks.classList.remove("active");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -156,6 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("mousemove", (e) => {
+      if (window.innerWidth <= 900) return;
+
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -193,12 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     letter.addEventListener("click", () => {
-      letter.classList.remove("clicked-letter");
+      letter.classList.remove("clicked-letter", "shake");
       void letter.offsetWidth;
-      letter.classList.add("clicked-letter");
+      letter.classList.add("clicked-letter", "shake");
 
       setTimeout(() => {
-        letter.classList.remove("clicked-letter");
+        letter.classList.remove("clicked-letter", "shake");
       }, 650);
     });
   });
@@ -210,19 +248,52 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  const typingElement = document.getElementById("typing");
+  const text = "Welcome Home";
+  let i = 0;
+
+  function typeEffect() {
+    if (!typingElement) return;
+    if (i < text.length) {
+      typingElement.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeEffect, 80);
+    }
+  }
+
+  if (typingElement) {
+    typingElement.textContent = "";
+    typeEffect();
+  }
+
+  const logoLink = document.getElementById("logoLink");
+  const homeSection = document.querySelector("#home");
+
+  if (logoLink && homeSection) {
+    logoLink.addEventListener("click", function(e) {
+      e.preventDefault();
+      homeSection.scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  }
+
+  initChatbot();
 });
-/* ========================= */
-/* CHATBOT */
-/* ========================= */
 
-const chatbotToggle = document.getElementById("chatbotToggle");
-const chatbotClose = document.getElementById("chatbotClose");
-const chatbotBox = document.getElementById("chatbotBox");
-const chatbotForm = document.getElementById("chatbotForm");
-const chatbotInput = document.getElementById("chatbotInput");
-const chatbotMessages = document.getElementById("chatbotMessages");
+function initChatbot() {
+  const chatbotToggle = document.getElementById("chatbotToggle");
+  const chatbotClose = document.getElementById("chatbotClose");
+  const chatbotBox = document.getElementById("chatbotBox");
+  const chatbotForm = document.getElementById("chatbotForm");
+  const chatbotInput = document.getElementById("chatbotInput");
+  const chatbotMessages = document.getElementById("chatbotMessages");
 
-if (chatbotToggle && chatbotClose && chatbotBox && chatbotForm && chatbotInput && chatbotMessages) {
+  if (!chatbotToggle || !chatbotClose || !chatbotBox || !chatbotForm || !chatbotInput || !chatbotMessages) {
+    return;
+  }
+
   chatbotToggle.addEventListener("click", () => {
     chatbotBox.classList.toggle("open");
   });
@@ -237,22 +308,22 @@ if (chatbotToggle && chatbotClose && chatbotBox && chatbotForm && chatbotInput &
     const question = chatbotInput.value.trim();
     if (!question) return;
 
-    addMessage(question, "user");
+    addMessage(question, "user", chatbotMessages);
     chatbotInput.value = "";
 
     setTimeout(() => {
       const answer = getBotReply(question);
-      addMessage(answer, "bot");
+      addMessage(answer, "bot", chatbotMessages);
     }, 500);
   });
 }
 
-function addMessage(text, sender) {
+function addMessage(text, sender, container) {
   const message = document.createElement("div");
   message.className = sender === "user" ? "user-message" : "bot-message";
   message.textContent = text;
-  chatbotMessages.appendChild(message);
-  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  container.appendChild(message);
+  container.scrollTop = container.scrollHeight;
 }
 
 function getBotReply(question) {
@@ -300,37 +371,3 @@ function getBotReply(question) {
 
   return "I can answer questions about Ibrahim's background, skills, featured projects, support section, and contact information.";
 }
-const text = "Welcome Home";
-const typingElement = document.getElementById("typing");
-
-let i = 0;
-
-function typeEffect(){
-  if(i < text.length){
-    typingElement.textContent += text.charAt(i);
-    i++;
-    setTimeout(typeEffect, 80);
-  }
-}
-
-typeEffect();
-const logoLink = document.getElementById("logoLink");
-
-logoLink.addEventListener("click", function(e) {
-  e.preventDefault();
-
-  document.querySelector("#home").scrollIntoView({
-    behavior: "smooth"
-  });
-});
-const heroLetters = document.querySelectorAll("#heroName span");
-
-heroLetters.forEach(letter => {
-  if (!letter.classList.contains("space")) {
-    letter.addEventListener("click", () => {
-      letter.classList.remove("shake");
-      void letter.offsetWidth;
-      letter.classList.add("shake");
-    });
-  }
-});
