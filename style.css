@@ -1831,3 +1831,115 @@ body.light-mode .platform-item:hover .platform-name{
   color:var(--platform-color);
   text-shadow:none;
 }
+/* =========================
+   MOBILE UX IMPROVEMENTS
+========================= */
+
+.menu-toggle{
+  display:none;
+  font-size:24px;
+  background:none;
+  border:none;
+  color:var(--text);
+  cursor:pointer;
+}
+
+/* 📱 موبايل */
+@media (max-width:768px){
+
+  /* Navbar */
+  .navbar{
+    padding:15px 20px;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:var(--bg-soft);
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    padding:20px 0;
+    display:none;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  /* Hero */
+  .hero{
+    padding-top:120px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+
+  .hero h2{
+    font-size:20px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  /* Sections */
+  .section{
+    padding:80px 20px;
+  }
+
+  /* About */
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .about-title{
+    font-size:36px;
+  }
+
+  /* Projects */
+  .projects-grid{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .project-card img{
+    height:220px;
+  }
+
+  /* Gallery */
+  .gallery-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  /* Platforms */
+  .platforms-grid{
+    grid-template-columns:1fr;
+  }
+
+  /* Contact */
+  .talk-wrapper{
+    grid-template-columns:1fr;
+  }
+
+  /* Buttons */
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  /* View More */
+  .view-more-link{
+    font-size:18px;
+  }
+
+}
