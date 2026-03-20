@@ -430,6 +430,37 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="script.js"></script>
+  <script>
+async function loadLogo() {
+  let logo = localStorage.getItem("siteLogo");
+
+  try {
+    const { data } = await supabase
+      .from("settings")
+      .select("logo")
+      .eq("id", 1)
+      .single();
+
+    if (data?.logo) {
+      logo = data.logo;
+    }
+  } catch (e) {}
+
+  const img = document.getElementById("siteLogo");
+  const text = document.getElementById("textLogo");
+
+  if (logo) {
+    img.src = logo;
+    img.style.display = "block";
+    text.style.display = "none";
+  } else {
+    img.style.display = "none";
+    text.style.display = "block";
+  }
+}
+
+loadLogo();
+</script>
 
 </body>
 </html>
