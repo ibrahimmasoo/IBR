@@ -611,3 +611,22 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("projectImageFile")?.addEventListener("change", previewProjectFile);
   document.getElementById("siteLogoFile")?.addEventListener("change", previewSiteLogoFile);
 });
+<script>
+async function removeLogo() {
+  // حذف من localStorage
+  localStorage.removeItem("siteLogo");
+
+  // لو بتستخدم Supabase (احترافي)
+  try {
+    await supabase.from("settings").upsert({
+      id: 1,
+      logo: null
+    });
+  } catch (e) {}
+
+  alert("Logo removed ✅");
+
+  // تحديث الصفحة
+  location.reload();
+}
+</script>
