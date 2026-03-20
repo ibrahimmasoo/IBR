@@ -427,5 +427,22 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="script.js"></script>
+  <script>
+async function loadFavicon() {
+  try {
+    const { data } = await supabase
+      .from("site_content")
+      .select("value")
+      .eq("key", "site_favicon")
+      .single();
+
+    if (data?.value) {
+      document.getElementById("dynamicFavicon").href = data.value;
+    }
+  } catch (e) {}
+}
+
+loadFavicon();
+</script>
 </body>
 </html>
