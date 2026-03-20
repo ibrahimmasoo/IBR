@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="project-details-page-body">
+  <div class="project-details-page">
+    <a href="index.html#projects" class="back-projects-link">← Back to Projects</a>
+    <div id="projectDetailsRoot" class="project-details-shell"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script>
+    const LOCAL_PROJECTS_KEY = "ibr_local_projects";
+    function escapeHtml(value = "") {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+    function getLocalProjects() {
+      try { return JSON.parse(localStorage.getItem(LOCAL_PROJECTS_KEY) || "[]"); }
+      catch (_) { return []; }
+    }
+    function getParams() {
+      const params = new URLSearchParams(window.location.search);
+      return { id: params.get('id'), source: params.get('source') || 'remote' };
+    }
+    async function getRemoteProject(id) {
+      if (!window.supabase || !window.SUPABASE_URL || !window.SUPABASE_ANON_KEY) return null;
+      try {
+        const db = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+        const { data } = await db.from('projects').select('*').eq('id', id).maybeSingle();
+        return data || null;
+      } catch (_) { return null; }
+    }
+    function renderProject(project) {
+      const root = document.getElementById('projectDetailsRoot');
+      if (!project) {
+        root.innerHTML = `<div class="project-details-card"><h1>Project not found</h1><p>The project may have been removed.</p></div>`;
+        return;
+      }
+      const tags = Array.isArray(project.tags) ? project.tags : [];
+      root.innerHTML = `
+        <article class="project-details-card">
+          ${project.image_url ? `<img class="project-details-image" src="${escapeHtml(project.image_url)}" alt="${escapeHtml(project.title || '')}">` : ''}
+          <div class="project-details-content">
+            <div class="project-details-badge">Project Details</div>
+            <h1>${escapeHtml(project.title || '')}</h1>
+            <p class="project-details-summary">${escapeHtml(project.description || '')}</p>
+            ${tags.length ? `<div class="project-details-tags">${tags.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</div>` : ''}
+            <div class="project-details-text">${escapeHtml(project.details || project.description || 'No extra details available yet.').replace(/
+/g, '<br>')}</div>
+            ${project.project_url ? `<a href="${escapeHtml(project.project_url)}" class="project-btn details-btn" target="_blank" rel="noopener">Open Project Link</a>` : ''}
+          </div>
+        </article>`;
+    }
+    (async function init(){
+      const { id, source } = getParams();
+      let project = null;
+      if (source === 'local') project = getLocalProjects().find(item => String(item.id) === String(id)) || null;
+      if (!project && id) project = await getRemoteProject(id);
+      renderProject(project);
+    })();
+  </script>
+</body>
+</html>
