@@ -635,3 +635,40 @@ async function removeLogo() {
 
   showToast("Logo removed. IBR text restored.");
 }
+async function uploadFavicon() {
+  const file = document.getElementById("faviconInput").files[0];
+  if (!file) return alert("Choose image first");
+
+  const fileName = "favicon-" + Date.now();
+
+  const { error } = await supabase.storage
+    .from("site-media")
+    .upload(fileName, file);
+
+  if (error) {
+    alert("Upload failed ❌");
+    return;
+  }
+
+  const url = supabase.storage
+    .from("site-media")
+    .getPublicUrl(fileName).data.publicUrl;
+
+  await supabase.from("site_content").upsert({
+    key: "site_favicon",
+    value: url
+  });
+
+  document.getElementById("faviconPreview").src = url;
+
+  alert("Favicon updated ✅");
+}
+
+async function removeFavicon() {
+  await supabase.from("site_content").upsert({
+    key: "site_favicon",
+    value: null
+  });
+
+  alert("Favicon removed");
+}
