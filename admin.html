@@ -20,6 +20,7 @@
       <a href="#content"><i class="ri-text"></i> Texts</a>
       <a href="#projects"><i class="ri-stack-line"></i> Projects</a>
       <a href="#branding"><i class="ri-image-edit-line"></i> Branding</a>
+      <a href="#favicon"><i class="ri-global-line"></i> Favicon</a>
       <a href="#gallery"><i class="ri-image-line"></i> Gallery</a>
       <a href="#links"><i class="ri-links-line"></i> Links</a>
       <a href="#analytics"><i class="ri-bar-chart-box-line"></i> Analytics</a>
@@ -112,7 +113,6 @@
         <div class="card table-wrap"><div id="projectsTable"></div></div>
       </section>
 
-
       <section id="branding">
         <div class="section-head"><h2>Branding</h2></div>
         <div class="card dashboard-note">
@@ -129,6 +129,26 @@
             <button type="submit" class="primary-btn">Save logo</button>
             <button type="button" class="table-btn" id="resetLogoForm">Reset</button>
             <button type="button" class="btn-secondary" id="removeLogoBtn" style="margin-top:10px;">Remove Logo</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="favicon">
+        <div class="section-head"><h2>Favicon</h2></div>
+        <div class="card dashboard-note">
+          Upload a favicon for your website tab. This image will appear in the browser tab next to your site name.
+        </div>
+        <form id="faviconForm" class="panel-form card form-grid two-col">
+          <input name="site_favicon_url" id="siteFaviconUrl" placeholder="Favicon image URL (optional if you upload a file)">
+          <div class="full upload-box">
+            <label for="siteFaviconFile">Upload favicon image</label>
+            <input id="siteFaviconFile" name="site_favicon_file" type="file" accept="image/*">
+            <img id="siteFaviconPreview" class="image-preview" alt="Favicon preview" hidden style="max-width:64px; max-height:64px;">
+          </div>
+          <div class="form-actions full">
+            <button type="submit" class="primary-btn">Save favicon</button>
+            <button type="button" class="table-btn" id="resetFaviconForm">Reset</button>
+            <button type="button" class="btn-secondary" id="removeFaviconBtn" style="margin-top:10px;">Remove Favicon</button>
           </div>
         </form>
       </section>
