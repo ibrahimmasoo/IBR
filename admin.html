@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBR Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand">IBR <span>Dashboard</span></div>
+      <a href="index.html"><i class="ri-home-5-line"></i> Back to site</a>
+      <a href="#overview"><i class="ri-dashboard-line"></i> Overview</a>
+      <a href="#content"><i class="ri-text"></i> Texts</a>
+      <a href="#projects"><i class="ri-stack-line"></i> Projects</a>
+      <a href="#gallery"><i class="ri-image-line"></i> Gallery</a>
+      <a href="#links"><i class="ri-links-line"></i> Links</a>
+      <a href="#analytics"><i class="ri-bar-chart-box-line"></i> Analytics</a>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Site Control Panel</h1>
+          <p>Edit texts, projects, gallery, links, and view analytics from one place.</p>
+        </div>
+        <div class="status-badge" id="connectionStatus">Connecting...</div>
+      </header>
+
+      <div class="notice">
+        Public dashboard mode is enabled. Anyone with this page link can edit your data.
+      </div>
+
+      <section id="overview">
+        <div class="section-head">
+          <h2>Overview</h2>
+        </div>
+        <div class="stats-grid" id="dashboardStats"></div>
+      </section>
+
+      <section id="content">
+        <div class="section-head"><h2>Texts</h2></div>
+        <form id="contentForm" class="panel-form card form-grid two-col">
+          <input name="hero_title" placeholder="Hero title">
+          <input name="hero_subtitle" placeholder="Hero subtitle">
+          <textarea name="hero_description" placeholder="Hero description"></textarea>
+          <input name="about_heading" placeholder="About heading">
+          <input name="about_subtitle" placeholder="About subtitle">
+          <textarea name="about_paragraph_1" placeholder="About paragraph 1"></textarea>
+          <textarea name="about_paragraph_2" placeholder="About paragraph 2"></textarea>
+          <textarea name="about_paragraph_3" placeholder="About paragraph 3"></textarea>
+          <textarea name="about_paragraph_4" placeholder="About paragraph 4"></textarea>
+          <input name="projects_heading" placeholder="Projects heading">
+          <textarea name="projects_description" placeholder="Projects description"></textarea>
+          <input name="gallery_heading" placeholder="Gallery heading">
+          <textarea name="gallery_description" placeholder="Gallery description"></textarea>
+          <input name="platforms_heading" placeholder="Platforms heading">
+          <textarea name="platforms_description" placeholder="Platforms description"></textarea>
+          <input name="contact_label" placeholder="Contact label">
+          <input name="contact_title" placeholder="Contact title">
+          <textarea name="contact_description" placeholder="Contact description"></textarea>
+          <input name="contact_email" placeholder="Contact email">
+          <input name="contact_email_url" placeholder="Contact email URL or mailto link">
+          <input name="contact_linkedin_url" placeholder="LinkedIn URL">
+          <input name="support_heading" placeholder="Support heading">
+          <textarea name="support_description" placeholder="Support description"></textarea>
+          <input name="footer_text" placeholder="Footer text">
+          <div class="form-actions full">
+            <button type="submit" class="primary-btn">Save texts</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="projects">
+        <div class="section-head"><h2>Projects</h2></div>
+        <form id="projectForm" class="panel-form card form-grid two-col">
+          <input type="hidden" name="id">
+          <input name="title" placeholder="Project title" required>
+          <input name="icon" placeholder="Icon e.g. ⚙">
+          <input name="project_url" placeholder="Project URL">
+          <input name="image_url" placeholder="Image URL">
+          <textarea name="description" placeholder="Description"></textarea>
+          <input name="tags" placeholder="Tags separated by commas">
+          <input type="number" name="display_order" placeholder="Display order" value="0">
+          <select name="is_featured">
+            <option value="true">Featured</option>
+            <option value="false">Not featured</option>
+          </select>
+          <select name="is_visible">
+            <option value="true">Visible</option>
+            <option value="false">Hidden</option>
+          </select>
+          <div class="form-actions full">
+            <button type="submit" class="primary-btn">Save project</button>
+            <button type="button" id="resetProjectForm">Clear</button>
+          </div>
+        </form>
+        <div class="card table-wrap" id="projectsTable"></div>
+      </section>
+
+      <section id="gallery">
+        <div class="section-head"><h2>Gallery</h2></div>
+        <form id="galleryForm" class="panel-form card form-grid two-col">
+          <input type="hidden" name="id">
+          <input name="title" placeholder="Image title" required>
+          <input name="image_url" placeholder="Image URL">
+          <input type="file" id="galleryFile" accept="image/*">
+          <input name="alt_text" placeholder="Alt text">
+          <input type="number" name="display_order" placeholder="Display order" value="0">
+          <select name="layout_type">
+            <option value="normal">Normal</option>
+            <option value="wide">Wide</option>
+            <option value="tall">Tall</option>
+          </select>
+          <select name="is_visible">
+            <option value="true">Visible</option>
+            <option value="false">Hidden</option>
+          </select>
+          <div class="form-actions full">
+            <button type="submit" class="primary-btn">Save image</button>
+            <button type="button" id="resetGalleryForm">Clear</button>
+          </div>
+        </form>
+        <div class="card table-wrap" id="galleryTable"></div>
+      </section>
+
+      <section id="links">
+        <div class="section-head"><h2>Links</h2></div>
+        <form id="linkForm" class="panel-form card form-grid two-col">
+          <input type="hidden" name="id">
+          <input name="label" placeholder="Label" required>
+          <input name="url" placeholder="URL" required>
+          <input name="platform" placeholder="Platform class e.g. instagram">
+          <input name="icon_class" placeholder="Icon class e.g. ri-instagram-line">
+          <textarea name="description" placeholder="Description"></textarea>
+          <input type="number" name="display_order" placeholder="Display order" value="0">
+          <select name="open_in_new_tab">
+            <option value="true">Open in new tab</option>
+            <option value="false">Open in same tab</option>
+          </select>
+          <select name="is_visible">
+            <option value="true">Visible</option>
+            <option value="false">Hidden</option>
+          </select>
+          <div class="form-actions full">
+            <button type="submit" class="primary-btn">Save link</button>
+            <button type="button" id="resetLinkForm">Clear</button>
+          </div>
+        </form>
+        <div class="card table-wrap" id="linksTable"></div>
+      </section>
+
+      <section id="analytics">
+        <div class="section-head"><h2>Analytics</h2></div>
+        <div class="analytics-grid">
+          <div class="card analytics-card">
+            <h3>Top Pages</h3>
+            <div id="topPages"></div>
+          </div>
+          <div class="card analytics-card">
+            <h3>Recent Visits</h3>
+            <div id="recentVisits"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
