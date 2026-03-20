@@ -13,7 +13,10 @@
 <body>
 
   <nav class="navbar">
-    <a href="index.html" class="logo" id="logoLink" onclick="window.location.replace('index.html?refresh=' + Date.now()); return false;"><img id="siteLogo" class="site-logo-image" src="" alt="Site Logo" hidden><span class="site-logo-text">IBR</span></a>
+    <a href="index.html" class="logo" id="logoLink" onclick="window.location.replace('index.html?refresh=' + Date.now()); return false;"><div id="logoContainer">
+  <span id="textLogo">IBR</span>
+  <img id="siteLogo" style="display:none; height:40px;">
+</div><span class="site-logo-text">IBR</span></a>
 
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
