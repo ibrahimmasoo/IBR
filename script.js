@@ -677,8 +677,16 @@ if (form) {
     const name = document.getElementById("talkName").value.trim();
     const email = document.getElementById("talkEmail").value.trim();
     const message = document.getElementById("talkMessage").value.trim();
+    const btn = form.querySelector(".talk-btn");
+
+    if (!name || !email || !message) {
+      alert("Please fill all fields");
+      return;
+    }
 
     try {
+      btn.textContent = "Sending...";
+
       const res = await fetch("https://tgbgeobkdolfxkzmtxf.supabase.co/functions/v1/contact", {
         method: "POST",
         headers: {
@@ -687,18 +695,30 @@ if (form) {
         body: JSON.stringify({ name, email, message })
       });
 
-      const data = await res.json();
+      const text = await res.text();
+      console.log("Status:", res.status);
+      console.log("Response:", text);
 
-      if (data.success) {
+      let data = {};
+      try {
+        data = JSON.parse(text);
+      } catch (_) {}
+
+      if (res.ok && data.success) {
+        btn.textContent = "Sent ✅";
         alert("Message sent successfully 🚀");
         form.reset();
-        form.querySelector(".talk-btn").textContent = "Sent ✅";
+        setTimeout(() => {
+          btn.textContent = "SEND MESSAGE";
+        }, 2000);
       } else {
+        btn.textContent = "SEND MESSAGE";
         alert("Failed to send ❌");
       }
 
     } catch (error) {
-      console.error(error);
+      console.error("Fetch error:", error);
+      btn.textContent = "SEND MESSAGE";
       alert("Something went wrong ❌");
     }
   });
