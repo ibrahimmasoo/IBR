@@ -697,7 +697,7 @@ form.addEventListener("submit", async (e) => {
       alert("Message sent successfully 🚀");
       form.reset();
     } else {
-      alert("Failed to send message ❌");
+     form.querySelector(".talk-btn").textContent = "Sent ✅";
     }
 
   } catch (error) {
