@@ -668,3 +668,40 @@ loadDynamicContent = async function() {
     renderProjects();
   }
 }
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("talkName").value.trim();
+  const email = document.getElementById("talkEmail").value.trim();
+  const message = document.getElementById("talkMessage").value.trim();
+
+  if (!name || !email || !message) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  try {
+    const res = await fetch("https://tgbgeobkdolfxkzmtxf.supabase.co/functions/v1/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, message })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Message sent successfully 🚀");
+      form.reset();
+    } else {
+      alert("Failed to send message ❌");
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong ❌");
+  }
+});
