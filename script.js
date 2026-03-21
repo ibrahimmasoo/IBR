@@ -670,38 +670,36 @@ loadDynamicContent = async function() {
 }
 const form = document.getElementById("contactForm");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const name = document.getElementById("talkName").value.trim();
-  const email = document.getElementById("talkEmail").value.trim();
-  const message = document.getElementById("talkMessage").value.trim();
+    const name = document.getElementById("talkName").value.trim();
+    const email = document.getElementById("talkEmail").value.trim();
+    const message = document.getElementById("talkMessage").value.trim();
 
-  if (!name || !email || !message) {
-    alert("Please fill all fields");
-    return;
-  }
+    try {
+      const res = await fetch("https://tgbgeobkdolfxkzmtxf.supabase.co/functions/v1/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, message })
+      });
 
-  try {
-    const res = await fetch("https://tgbgeobkdolfxkzmtxf.supabase.co/functions/v1/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, message })
-    });
+      const data = await res.json();
 
-    const data = await res.json();
+      if (data.success) {
+        alert("Message sent successfully 🚀");
+        form.reset();
+        form.querySelector(".talk-btn").textContent = "Sent ✅";
+      } else {
+        alert("Failed to send ❌");
+      }
 
-    if (data.success) {
-      alert("Message sent successfully 🚀");
-      form.reset();
-    } else {
-     form.querySelector(".talk-btn").textContent = "Sent ✅";
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong ❌");
     }
-
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong ❌");
-  }
-});
+  });
+}
