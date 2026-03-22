@@ -31,5 +31,42 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="admin.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+  window.SUPABASE_URL,
+  window.SUPABASE_ANON_KEY
+);
+
+document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("adminEmail").value;
+  const password = document.getElementById("adminPassword").value;
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    alert("Wrong email or password ❌");
+    return;
+  }
+
+  // 👇 السماح ليك بس
+  if (data.user.email !== "ibr@ibr.com") {
+    await supabase.auth.signOut();
+    alert("Access denied ❌");
+    return;
+  }
+
+  // ✅ دخول ناجح
+  window.location.href = "admin.html";
+});
+</script>
 </body>
 </html>
