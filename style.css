@@ -2173,3 +2173,29 @@ body.light-mode .menu-toggle{
     text-align:center;
   }
 }
+/* 📱 Mobile: اجمع الاسم في كلمتين */
+@media (max-width: 768px) {
+
+  .hero-name {
+    display: block;
+    text-align: center;
+    font-size: 42px; /* تظبيط الحجم */
+    line-height: 1.2;
+  }
+
+  /* نخفي الحروف الفردية */
+  .hero-name span {
+    display: none;
+  }
+
+  /* نكتب الاسم كامل بدل الحروف */
+  .hero-name::before {
+    content: "IBRAHIM";
+    display: block;
+  }
+
+  .hero-name::after {
+    content: "MASOOD";
+    display: block;
+  }
+}
