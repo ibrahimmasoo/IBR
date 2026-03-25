@@ -975,7 +975,7 @@ async function loadMessagesPage() {
   const wrap = document.getElementById("messagesTable");
   if (!wrap) return;
 
-  const { data, error } = await db
+  const { data, error } = await supabase
     .from("contact_messages")
     .select("*")
     .order("created_at", { ascending: false });
