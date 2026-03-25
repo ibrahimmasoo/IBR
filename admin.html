@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBR Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <a href="admin.html" class="brand">IBR <span>Dashboard</span></a>
+      <a href="index.html"><i class="ri-home-5-line"></i> Back to site</a>
+      <a href="admin.html"><i class="ri-dashboard-line"></i> Dashboard Home</a>
+      <a href="admin-messages.html"><i class="ri-mail-line"></i> Messages</a>
+      <a href="admin-content.html"><i class="ri-text"></i> Edit Texts</a>
+      <a href="admin-projects.html"><i class="ri-stack-line"></i> Edit Projects</a>
+      <a href="admin-gallery.html"><i class="ri-image-line"></i> Edit Gallery</a>
+      <a href="admin-branding.html"><i class="ri-image-edit-line"></i> Branding & Links</a>
+      <a href="admin-analytics.html"><i class="ri-bar-chart-box-line"></i> Analytics</a>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Dashboard Home</h1>
+          <p>Open a section below to edit texts, projects, gallery, branding, and analytics.</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="status-badge" id="connectionStatus">Checking session...</div>
+          <button type="button" class="table-btn" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <div class="notice">Only your signed-in account can open and edit this page.</div>
+      <section id="overview">
+        <div class="section-head"><h2>Dashboard Overview</h2></div>
+        <div class="stats-grid" id="dashboardStats"></div>
+      </section>
+
+      <section id="dashboardSections">
+        <div class="section-head"><h2>Edit Sections</h2></div>
+        <div class="dashboard-cards-grid">
+          <a class="dashboard-nav-card" href="admin-messages.html">
+            <i class="ri-mail-line"></i>
+            <h3>Messages</h3>
+            <p>Read contact form messages sent from the website.</p>
+          </a>
+          <a class="dashboard-nav-card" href="admin-content.html">
+            <i class="ri-text"></i>
+            <h3>Texts</h3>
+            <p>Edit homepage, about, contact, support, and language texts.</p>
+          </a>
+          <a class="dashboard-nav-card" href="admin-projects.html">
+            <i class="ri-stack-line"></i>
+            <h3>Projects</h3>
+            <p>Add, edit, reorder, and remove project cards and details.</p>
+          </a>
+          <a class="dashboard-nav-card" href="admin-gallery.html">
+            <i class="ri-image-line"></i>
+            <h3>Gallery</h3>
+            <p>Upload gallery images, set layout type, visibility, and order.</p>
+          </a>
+          <a class="dashboard-nav-card" href="admin-branding.html">
+            <i class="ri-brush-line"></i>
+            <h3>Branding & Links</h3>
+            <p>Update logo, favicon, and your platform links from one place.</p>
+          </a>
+          <a class="dashboard-nav-card" href="admin-analytics.html">
+            <i class="ri-bar-chart-box-line"></i>
+            <h3>Analytics</h3>
+            <p>View top pages, recent visits, and basic traffic activity.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
