@@ -557,22 +557,48 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="script.js"></script>
-  <script>
-async function loadFavicon() {
-  try {
-    const { data } = await supabase
-      .from("site_content")
-      .select("value")
-      .eq("key", "site_favicon")
-      .single();
+  <script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-    if (data?.value) {
-      document.getElementById("dynamicFavicon").href = data.value;
-    }
-  } catch (e) {}
-}
+  const supabase = createClient(
+    "https://tgbgeobkdolflxkzmtxf.supabase.co",
+    "sb_publishable_CIB-5vcpEdXNpAz7I4zgtA_z7PDB5iU"
+  );
 
-loadFavicon();
+  const form = document.getElementById("contactForm");
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("talkName")?.value.trim();
+      const email = document.getElementById("talkEmail")?.value.trim();
+      const message = document.getElementById("talkMessage")?.value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from("contact_messages")
+          .insert([{ name, email, message }], { returning: "minimal" });
+
+        if (error) {
+          console.error("Supabase insert error:", error);
+          alert("Error: " + (error.message || "Unknown error"));
+          return;
+        }
+
+        alert("✅ Message sent successfully");
+        form.reset();
+      } catch (err) {
+        console.error("Unexpected error:", err);
+        alert("Unexpected error: " + (err.message || err));
+      }
+    });
+  }
 </script>
 
 <script type="module">
