@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Gallery | IBR Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <a href="admin.html" class="brand">IBR <span>Dashboard</span></a>
+      <a href="index.html"><i class="ri-home-5-line"></i> Back to site</a>
+      <a href="admin.html"><i class="ri-dashboard-line"></i> Dashboard Home</a>
+      <a href="admin-content.html"><i class="ri-text"></i> Edit Texts</a>
+      <a href="admin-projects.html"><i class="ri-stack-line"></i> Edit Projects</a>
+      <a href="admin-gallery.html"><i class="ri-image-line"></i> Edit Gallery</a>
+      <a href="admin-branding.html"><i class="ri-image-edit-line"></i> Branding & Links</a>
+      <a href="admin-analytics.html"><i class="ri-bar-chart-box-line"></i> Analytics</a>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Edit Gallery</h1>
+          <p>Manage gallery images, layout types, order, and visibility.</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="status-badge" id="connectionStatus">Checking session...</div>
+          <button type="button" class="table-btn" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <div class="notice">Only your signed-in account can open and edit this page.</div>
+      <section id="gallery">
+        <div class="section-head"><h2>Gallery</h2></div>
+        <div class="card dashboard-note">
+          Upload gallery images from here. You can choose the image layout, title, alt text, order, and visibility.
+        </div>
+        <form id="galleryForm" class="panel-form card form-grid two-col">
+          <input type="hidden" name="id">
+          <input name="title" placeholder="Image title" required>
+          <input name="image_url" placeholder="Image URL (optional if you upload a file)">
+          <input name="alt_text" placeholder="Alt text for accessibility">
+          <input name="display_order" type="number" placeholder="Display order">
+          <select name="layout_type">
+            <option value="normal">Normal</option>
+            <option value="wide">Wide</option>
+            <option value="tall">Tall</option>
+          </select>
+          <select name="is_visible">
+            <option value="true">Visible</option>
+            <option value="false">Hidden</option>
+          </select>
+          <div class="full upload-box">
+            <label for="galleryFile">Upload gallery image</label>
+            <input id="galleryFile" name="gallery_file" type="file" accept="image/*">
+            <img id="galleryImagePreview" class="image-preview" alt="Gallery preview" hidden>
+          </div>
+          <div class="form-actions full">
+            <button type="submit" class="primary-btn">Save image</button>
+            <button type="button" class="table-btn" id="resetGalleryForm">Reset</button>
+          </div>
+        </form>
+        <div class="card table-wrap"><div id="galleryTable"></div></div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
