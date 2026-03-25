@@ -637,7 +637,26 @@ loadFavicon();
         await sendContactEmail({ name, email, message });
         alert("Message sent successfully");
       } catch (emailErr) {
-        alert("Message saved, but email sending is not active yet.");
+        try {
+  await fetch("https://tgbgeobkdolflxkzmtxf.functions.supabase.co/send-contact-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      message
+    })
+  });
+
+  alert("Message sent successfully 🚀");
+  form.reset();
+
+} catch (err) {
+  console.error(err);
+  alert("Message saved, but email failed ❌");
+}
       }
 
       form.reset();
