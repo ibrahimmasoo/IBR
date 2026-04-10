@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Login | Ibrahim Masood | IBR</title>
+  <meta name="description" content="Secure dashboard login for the Ibrahim Masood portfolio website.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Ibrahim Masood">
+  <link rel="canonical" href="https://ibrahimmasood.site/login.html">
+  <link rel="icon" type="image/jpeg" href="assets/images/ibrahim-masood-ibr-favicon.jpeg">
+  <link rel="apple-touch-icon" href="assets/images/ibrahim-masood-ibr-favicon.jpeg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dashboard Login | Ibrahim Masood | IBR">
+  <meta property="og:description" content="Secure dashboard login for the Ibrahim Masood portfolio website.">
+  <meta property="og:url" content="https://ibrahimmasood.site/login.html">
+  <meta property="og:image" content="https://ibrahimmasood.site/assets/images/ibrahim-masood-ibr-profile.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dashboard Login | Ibrahim Masood | IBR">
+  <meta name="twitter:description" content="Secure dashboard login for the Ibrahim Masood portfolio website.">
+  <meta name="twitter:image" content="https://ibrahimmasood.site/assets/images/ibrahim-masood-ibr-profile.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-login-page">
+  <main class="login-screen">
+    <section class="login-card">
+      <p class="login-kicker">Protected dashboard access</p>
+      <h1>Ibrahim Masood</h1>
+      <h2>Dashboard Sign In</h2>
+      <p class="login-copy">Sign in first, then you will be redirected to the main dashboard page where you can open each editing section.</p>
+
+      <form id="adminLoginForm" class="login-form">
+        <input id="adminEmail" type="email" placeholder="Email address" autocomplete="username" required>
+        <input id="adminPassword" type="password" placeholder="Password" autocomplete="current-password" required>
+        <button id="adminLoginBtn" type="submit" class="primary-btn">Sign in</button>
+        <p id="adminLoginError" class="login-error"></p>
+      </form>
+
+      <div class="login-actions">
+        <a href="index.html" class="table-btn">Back to site</a>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/admin.js"></script>
+
+<script>
+const supabase = window.supabase.createClient(
+  window.SUPABASE_URL,
+  window.SUPABASE_ANON_KEY
+);
+
+document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("adminEmail").value;
+  const password = document.getElementById("adminPassword").value;
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    alert("Wrong email or password ❌");
+    return;
+  }
+
+  // 👇 السماح ليك بس
+  if (data.user.email !== "ibr@ibr.com") {
+    await supabase.auth.signOut();
+    alert("Access denied ❌");
+    return;
+  }
+
+  // ✅ دخول ناجح
+  window.location.href = "admin.html";
+});
+</script>
+</body>
+</html>

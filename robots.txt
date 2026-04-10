@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ibrahimmasood.site/sitemap.xml

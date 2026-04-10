@@ -1,0 +1,57 @@
+EMAIL + DASHBOARD SETUP
+=======================
+
+What is already ready in this project:
+1) Contact form saves messages in Supabase table: public.contact_messages
+2) Dashboard page admin-messages.html reads the same table
+3) The website calls Supabase Edge Function:
+   https://tgbgeobkdolflxkzmtxf.supabase.co/functions/v1/send-contact-email
+4) Edge Function source is included in:
+   supabase/functions/send-contact-email/index.ts
+
+You still need to do these steps in Supabase:
+
+STEP 1: Run SQL
+---------------
+Run file:
+assets/sql/supabase-contact-policies.sql
+
+STEP 2: Add Resend secret
+-------------------------
+In Supabase:
+Settings > Edge Functions > Secrets
+
+Add:
+Name: RESEND_API_KEY
+Value: your Resend API key
+
+STEP 3: Create / Deploy the function
+------------------------------------
+Function name must be exactly:
+send-contact-email
+
+Paste code from:
+supabase/functions/send-contact-email/index.ts
+
+Then deploy it.
+
+STEP 4: Test
+------------
+Send a message from the website.
+Expected result:
+- message appears in admin-messages.html
+- email is sent to:
+  ibrahimmasoud201@gmail.com
+
+Notes:
+------
+- If the message is saved but email fails, check the Edge Function logs.
+- For production email delivery, verify your domain in Resend and replace:
+  onboarding@resend.dev
+  with your real domain sender.
+
+IMPORTANT UPDATE:
+- The website now uses the correct Supabase function URL format:
+  https://tgbgeobkdolflxkzmtxf.supabase.co/functions/v1/send-contact-email
+- The Edge Function sender is:
+  IBR <contact@ibrahimmasood.site>
